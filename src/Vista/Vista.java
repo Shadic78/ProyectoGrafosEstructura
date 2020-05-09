@@ -8,6 +8,8 @@ import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
 import javax.swing.DefaultComboBoxModel;
@@ -54,10 +56,12 @@ public class Vista extends JFrame
         panelGraficoGrafo = new JPanel();
         jPanel6 = new JPanel();
         jPanel7 = new JPanel();
-        jLabel1 = new JLabel();
-        jLabel2 = new JLabel();
+        jPanel3 = new JPanel();
         jButton4 = new JButton();
         jButton5 = new JButton();
+        jPanel4 = new JPanel();
+        jButton6 = new JButton();
+        jButton7 = new JButton();
         jPanel1 = new JPanel();
         jComboBox1 = new JComboBox<>();
         jButton1 = new JButton();
@@ -86,33 +90,61 @@ public class Vista extends JFrame
         jPanel7.setPreferredSize(new Dimension(260, 300));
         jPanel7.setLayout(null);
 
-        jLabel1.setFont(new Font("Dialog", 0, 16)); // NOI18N
-        jLabel1.setForeground(new Color(238, 110, 115));
-        jLabel1.setText("Aristas:");
-        jPanel7.add(jLabel1);
-        jLabel1.setBounds(10, 140, 80, 21);
-
-        jLabel2.setFont(new Font("Dialog", 0, 16)); // NOI18N
-        jLabel2.setForeground(new Color(238, 110, 115));
-        jLabel2.setText("Vértices:");
-        jPanel7.add(jLabel2);
-        jLabel2.setBounds(10, 20, 80, 21);
+        jPanel3.setBackground(new Color(255, 255, 255));
+        jPanel3.setBorder(BorderFactory.createTitledBorder(null, "Aristas", TitledBorder.DEFAULT_JUSTIFICATION, TitledBorder.DEFAULT_POSITION, new Font("Dialog", 0, 12), new Color(38, 166, 154))); // NOI18N
+        jPanel3.setLayout(null);
 
         jButton4.setIcon(new ImageIcon("C:\\Users\\Equipo1\\Desktop\\Material\\Button+Green1.png")); // NOI18N
         jButton4.setBorder(null);
         jButton4.setBorderPainted(false);
         jButton4.setCursor(new Cursor(Cursor.HAND_CURSOR));
         jButton4.setPressedIcon(new ImageIcon("C:\\Users\\Equipo1\\Desktop\\Material\\Button+Green2.png")); // NOI18N
-        jPanel7.add(jButton4);
-        jButton4.setBounds(60, 50, 57, 57);
+        jPanel3.add(jButton4);
+        jButton4.setBounds(60, 30, 57, 57);
 
         jButton5.setIcon(new ImageIcon("C:\\Users\\Equipo1\\Desktop\\Material\\Button+RedNew1.png")); // NOI18N
         jButton5.setBorder(null);
         jButton5.setBorderPainted(false);
         jButton5.setCursor(new Cursor(Cursor.HAND_CURSOR));
         jButton5.setPressedIcon(new ImageIcon("C:\\Users\\Equipo1\\Desktop\\Material\\Button+RedNew2.png")); // NOI18N
-        jPanel7.add(jButton5);
-        jButton5.setBounds(160, 50, 57, 57);
+        jButton5.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+        jPanel3.add(jButton5);
+        jButton5.setBounds(160, 30, 57, 57);
+
+        jPanel7.add(jPanel3);
+        jPanel3.setBounds(0, 110, 280, 110);
+
+        jPanel4.setBackground(new Color(255, 255, 255));
+        jPanel4.setBorder(BorderFactory.createTitledBorder(null, "Vértices", TitledBorder.DEFAULT_JUSTIFICATION, TitledBorder.DEFAULT_POSITION, new Font("Dialog", 0, 12), new Color(38, 166, 154))); // NOI18N
+        jPanel4.setLayout(null);
+
+        jButton6.setIcon(new ImageIcon("C:\\Users\\Equipo1\\Desktop\\Material\\Button+Green1.png")); // NOI18N
+        jButton6.setBorder(null);
+        jButton6.setBorderPainted(false);
+        jButton6.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        jButton6.setPressedIcon(new ImageIcon("C:\\Users\\Equipo1\\Desktop\\Material\\Button+Green2.png")); // NOI18N
+        jPanel4.add(jButton6);
+        jButton6.setBounds(60, 30, 57, 57);
+
+        jButton7.setIcon(new ImageIcon("C:\\Users\\Equipo1\\Desktop\\Material\\Button+RedNew1.png")); // NOI18N
+        jButton7.setBorder(null);
+        jButton7.setBorderPainted(false);
+        jButton7.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        jButton7.setPressedIcon(new ImageIcon("C:\\Users\\Equipo1\\Desktop\\Material\\Button+RedNew2.png")); // NOI18N
+        jButton7.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
+        jPanel4.add(jButton7);
+        jButton7.setBounds(160, 30, 57, 57);
+
+        jPanel7.add(jPanel4);
+        jPanel4.setBounds(0, 0, 280, 110);
 
         jPanel6.add(jPanel7, BorderLayout.CENTER);
 
@@ -155,6 +187,14 @@ public class Vista extends JFrame
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton5ActionPerformed(ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton7ActionPerformed(ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton7ActionPerformed
+
 
     public ButtonGroup getGrupoBusqueda()
     {
@@ -183,11 +223,13 @@ public class Vista extends JFrame
     private JButton jButton1;
     private JButton jButton4;
     private JButton jButton5;
+    private JButton jButton6;
+    private JButton jButton7;
     private JComboBox<String> jComboBox1;
-    private JLabel jLabel1;
-    private JLabel jLabel2;
     private JPanel jPanel1;
     private JPanel jPanel2;
+    private JPanel jPanel3;
+    private JPanel jPanel4;
     private JPanel jPanel6;
     private JPanel jPanel7;
     private JScrollPane jScrollPane1;
