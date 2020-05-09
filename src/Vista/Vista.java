@@ -55,8 +55,9 @@ public class Vista extends JFrame
         jPanel6 = new JPanel();
         jPanel7 = new JPanel();
         jLabel1 = new JLabel();
-        jButton2 = new JButton();
-        jButton3 = new JButton();
+        jLabel2 = new JLabel();
+        jButton4 = new JButton();
+        jButton5 = new JButton();
         jPanel1 = new JPanel();
         jComboBox1 = new JComboBox<>();
         jButton1 = new JButton();
@@ -80,35 +81,38 @@ public class Vista extends JFrame
         jPanel6.setLayout(new BorderLayout());
 
         jPanel7.setBackground(new Color(255, 255, 255));
-        jPanel7.setBorder(BorderFactory.createTitledBorder("Edición"));
+        jPanel7.setBorder(BorderFactory.createTitledBorder(null, "Edición", TitledBorder.DEFAULT_JUSTIFICATION, TitledBorder.DEFAULT_POSITION, new Font("Dialog", 0, 12), new Color(38, 156, 144))); // NOI18N
         jPanel7.setMinimumSize(new Dimension(280, 70));
         jPanel7.setPreferredSize(new Dimension(260, 300));
         jPanel7.setLayout(null);
 
         jLabel1.setFont(new Font("Dialog", 0, 16)); // NOI18N
         jLabel1.setForeground(new Color(238, 110, 115));
-        jLabel1.setText("Vértices");
+        jLabel1.setText("Aristas:");
         jPanel7.add(jLabel1);
-        jLabel1.setBounds(10, 20, 80, 21);
+        jLabel1.setBounds(10, 140, 80, 21);
 
-        jButton2.setIcon(new ImageIcon("C:\\Users\\Equipo1\\Desktop\\Material\\ButtonXRed1.png")); // NOI18N
-        jButton2.setBorder(null);
-        jButton2.setBorderPainted(false);
-        jButton2.setCursor(new Cursor(Cursor.HAND_CURSOR));
-        jButton2.setMaximumSize(new Dimension(57, 57));
-        jButton2.setMinimumSize(new Dimension(57, 57));
-        jButton2.setPreferredSize(new Dimension(57, 57));
-        jButton2.setPressedIcon(new ImageIcon("C:\\Users\\Equipo1\\Desktop\\Material\\ButtonXRed2.png")); // NOI18N
-        jPanel7.add(jButton2);
-        jButton2.setBounds(160, 50, 57, 57);
+        jLabel2.setFont(new Font("Dialog", 0, 16)); // NOI18N
+        jLabel2.setForeground(new Color(238, 110, 115));
+        jLabel2.setText("Vértices:");
+        jPanel7.add(jLabel2);
+        jLabel2.setBounds(10, 20, 80, 21);
 
-        jButton3.setIcon(new ImageIcon("C:\\Users\\Equipo1\\Desktop\\Material\\Button+Red1.png")); // NOI18N
-        jButton3.setBorder(null);
-        jButton3.setBorderPainted(false);
-        jButton3.setCursor(new Cursor(Cursor.HAND_CURSOR));
-        jButton3.setPressedIcon(new ImageIcon("C:\\Users\\Equipo1\\Desktop\\Material\\Button+Red2.png")); // NOI18N
-        jPanel7.add(jButton3);
-        jButton3.setBounds(60, 50, 57, 57);
+        jButton4.setIcon(new ImageIcon("C:\\Users\\Equipo1\\Desktop\\Material\\Button+Green1.png")); // NOI18N
+        jButton4.setBorder(null);
+        jButton4.setBorderPainted(false);
+        jButton4.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        jButton4.setPressedIcon(new ImageIcon("C:\\Users\\Equipo1\\Desktop\\Material\\Button+Green2.png")); // NOI18N
+        jPanel7.add(jButton4);
+        jButton4.setBounds(60, 50, 57, 57);
+
+        jButton5.setIcon(new ImageIcon("C:\\Users\\Equipo1\\Desktop\\Material\\Button+RedNew1.png")); // NOI18N
+        jButton5.setBorder(null);
+        jButton5.setBorderPainted(false);
+        jButton5.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        jButton5.setPressedIcon(new ImageIcon("C:\\Users\\Equipo1\\Desktop\\Material\\Button+RedNew2.png")); // NOI18N
+        jPanel7.add(jButton5);
+        jButton5.setBounds(160, 50, 57, 57);
 
         jPanel6.add(jPanel7, BorderLayout.CENTER);
 
@@ -177,10 +181,11 @@ public class Vista extends JFrame
     private ButtonGroup grupoCreacionGrafo;
     private ButtonGroup grupoRecorrido;
     private JButton jButton1;
-    private JButton jButton2;
-    private JButton jButton3;
+    private JButton jButton4;
+    private JButton jButton5;
     private JComboBox<String> jComboBox1;
     private JLabel jLabel1;
+    private JLabel jLabel2;
     private JPanel jPanel1;
     private JPanel jPanel2;
     private JPanel jPanel6;
