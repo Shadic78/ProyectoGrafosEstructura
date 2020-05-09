@@ -66,6 +66,11 @@ public class Vista extends JFrame
         jComboBox1 = new JComboBox<>();
         jButton1 = new JButton();
         jPanel2 = new JPanel();
+        jLabel1 = new JLabel();
+        jComboBox2 = new JComboBox<>();
+        jTextField1 = new JTextField();
+        jLabel2 = new JLabel();
+        jButton2 = new JButton();
 
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setTitle("Grafos!");
@@ -87,7 +92,7 @@ public class Vista extends JFrame
         jPanel7.setBackground(new Color(255, 255, 255));
         jPanel7.setBorder(BorderFactory.createTitledBorder(null, "Edición", TitledBorder.DEFAULT_JUSTIFICATION, TitledBorder.DEFAULT_POSITION, new Font("Dialog", 0, 12), new Color(38, 156, 144))); // NOI18N
         jPanel7.setMinimumSize(new Dimension(280, 70));
-        jPanel7.setPreferredSize(new Dimension(260, 300));
+        jPanel7.setPreferredSize(new Dimension(260, 280));
         jPanel7.setLayout(null);
 
         jPanel3.setBackground(new Color(255, 255, 255));
@@ -176,8 +181,47 @@ public class Vista extends JFrame
 
         jPanel6.add(jPanel1, BorderLayout.PAGE_START);
 
-        jPanel2.setBorder(BorderFactory.createTitledBorder("Busquedas"));
-        jPanel2.setPreferredSize(new Dimension(22, 250));
+        jPanel2.setBackground(new Color(255, 255, 255));
+        jPanel2.setBorder(BorderFactory.createTitledBorder(null, "Busquedas", TitledBorder.DEFAULT_JUSTIFICATION, TitledBorder.DEFAULT_POSITION, new Font("Dialog", 0, 12), new Color(38, 166, 154))); // NOI18N
+        jPanel2.setPreferredSize(new Dimension(22, 280));
+        jPanel2.setLayout(null);
+
+        jLabel1.setFont(new Font("Dialog", 0, 12)); // NOI18N
+        jLabel1.setForeground(new Color(255, 141, 141));
+        jLabel1.setText("Vértice:");
+        jPanel2.add(jLabel1);
+        jLabel1.setBounds(10, 50, 50, 16);
+
+        jComboBox2.setEditable(true);
+        jComboBox2.setFont(new Font("Dialog", 0, 12)); // NOI18N
+        jComboBox2.setModel(new DefaultComboBoxModel<>(new String[] { "Anchura", "Profundidad" }));
+        jComboBox2.setBorder(null);
+        jComboBox2.setFocusable(false);
+        jComboBox2.setOpaque(false);
+        jPanel2.add(jComboBox2);
+        jComboBox2.setBounds(140, 20, 130, 20);
+
+        jTextField1.setText(" ");
+        jPanel2.add(jTextField1);
+        jTextField1.setBounds(60, 50, 90, 30);
+
+        jLabel2.setFont(new Font("Dialog", 0, 12)); // NOI18N
+        jLabel2.setForeground(new Color(255, 141, 141));
+        jLabel2.setText("Tipo de búsqueda:");
+        jPanel2.add(jLabel2);
+        jLabel2.setBounds(10, 20, 120, 16);
+
+        jButton2.setBackground(new Color(38, 166, 154));
+        jButton2.setFont(new Font("Dialog", 0, 14)); // NOI18N
+        jButton2.setForeground(new Color(255, 255, 255));
+        jButton2.setText("Buscar");
+        jButton2.setBorder(null);
+        jButton2.setBorderPainted(false);
+        jButton2.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        jButton2.setFocusPainted(false);
+        jPanel2.add(jButton2);
+        jButton2.setBounds(160, 50, 110, 30);
+
         jPanel6.add(jPanel2, BorderLayout.PAGE_END);
 
         jSplitPane1.setLeftComponent(jPanel6);
@@ -221,11 +265,15 @@ public class Vista extends JFrame
     private ButtonGroup grupoCreacionGrafo;
     private ButtonGroup grupoRecorrido;
     private JButton jButton1;
+    private JButton jButton2;
     private JButton jButton4;
     private JButton jButton5;
     private JButton jButton6;
     private JButton jButton7;
     private JComboBox<String> jComboBox1;
+    private JComboBox<String> jComboBox2;
+    private JLabel jLabel1;
+    private JLabel jLabel2;
     private JPanel jPanel1;
     private JPanel jPanel2;
     private JPanel jPanel3;
@@ -234,6 +282,7 @@ public class Vista extends JFrame
     private JPanel jPanel7;
     private JScrollPane jScrollPane1;
     private JSplitPane jSplitPane1;
+    private JTextField jTextField1;
     private JPanel panelGraficoGrafo;
     // End of variables declaration//GEN-END:variables
 }
