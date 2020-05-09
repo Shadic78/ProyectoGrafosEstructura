@@ -25,6 +25,7 @@ import javax.swing.JSeparator;
 import javax.swing.JSplitPane;
 import javax.swing.JTextField;
 import javax.swing.WindowConstants;
+import javax.swing.border.TitledBorder;
 
 /**
  *
@@ -111,18 +112,31 @@ public class Vista extends JFrame
 
         jPanel6.add(jPanel7, BorderLayout.CENTER);
 
-        jPanel1.setBorder(BorderFactory.createTitledBorder("Creación del grafo"));
+        jPanel1.setBackground(new Color(255, 255, 255));
+        jPanel1.setBorder(BorderFactory.createTitledBorder(null, "Creación del grafo", TitledBorder.DEFAULT_JUSTIFICATION, TitledBorder.DEFAULT_POSITION, new Font("Dialog", 0, 12), new Color(38, 166, 154))); // NOI18N
         jPanel1.setMinimumSize(new Dimension(22, 150));
-        jPanel1.setPreferredSize(new Dimension(22, 60));
+        jPanel1.setPreferredSize(new Dimension(22, 80));
         jPanel1.setLayout(null);
 
+        jComboBox1.setEditable(true);
+        jComboBox1.setFont(new Font("Dialog", 0, 12)); // NOI18N
         jComboBox1.setModel(new DefaultComboBoxModel<>(new String[] { "Matriz de adyacencia", "Lista de adyacencia" }));
+        jComboBox1.setBorder(BorderFactory.createTitledBorder(null, "Tipo de grafo", TitledBorder.DEFAULT_JUSTIFICATION, TitledBorder.DEFAULT_POSITION, new Font("Dialog", 0, 11), new Color(255, 141, 141))); // NOI18N
+        jComboBox1.setFocusable(false);
+        jComboBox1.setOpaque(false);
         jPanel1.add(jComboBox1);
-        jComboBox1.setBounds(10, 20, 150, 27);
+        jComboBox1.setBounds(10, 20, 150, 50);
 
+        jButton1.setBackground(new Color(38, 166, 154));
+        jButton1.setFont(new Font("Dialog", 0, 14)); // NOI18N
+        jButton1.setForeground(new Color(255, 255, 255));
         jButton1.setText("Crear");
+        jButton1.setBorder(null);
+        jButton1.setBorderPainted(false);
+        jButton1.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        jButton1.setFocusPainted(false);
         jPanel1.add(jButton1);
-        jButton1.setBounds(170, 20, 100, 27);
+        jButton1.setBounds(170, 37, 100, 30);
 
         jPanel6.add(jPanel1, BorderLayout.PAGE_START);
 
