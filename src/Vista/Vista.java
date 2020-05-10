@@ -81,13 +81,14 @@ public class Vista extends JFrame
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setTitle("Grafos!");
         setMinimumSize(new Dimension(800, 600));
+        setPreferredSize(new Dimension(1020, 672));
 
         jSplitPane1.setDividerLocation(280);
 
         panelGraficoGrafo.setBackground(new Color(232, 233, 234));
         panelGraficoGrafo.setBorder(BorderFactory.createTitledBorder(null, "Grafo", TitledBorder.DEFAULT_JUSTIFICATION, TitledBorder.DEFAULT_POSITION, new Font("Dialog", 0, 12), new Color(38, 166, 154))); // NOI18N
         panelGraficoGrafo.setMinimumSize(new Dimension(0, 0));
-        panelGraficoGrafo.setPreferredSize(new Dimension(0, 0));
+        panelGraficoGrafo.setPreferredSize(new Dimension(700, 0));
         panelGraficoGrafo.setLayout(new BorderLayout());
         jScrollPane1.setViewportView(panelGraficoGrafo);
 
