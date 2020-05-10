@@ -5,30 +5,23 @@ import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Font;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
 import javax.swing.DefaultComboBoxModel;
-import javax.swing.GroupLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
-import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
-import javax.swing.JSeparator;
 import javax.swing.JSplitPane;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.WindowConstants;
-import javax.swing.border.BevelBorder;
 import javax.swing.border.MatteBorder;
 import javax.swing.border.TitledBorder;
 
@@ -144,6 +137,11 @@ public class Vista extends JFrame
         jButton6.setBorderPainted(false);
         jButton6.setCursor(new Cursor(Cursor.HAND_CURSOR));
         jButton6.setPressedIcon(new ImageIcon("C:\\Users\\Equipo1\\Desktop\\Material\\Button+GreenGray2.png")); // NOI18N
+        jButton6.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
         PanelVertices.add(jButton6);
         jButton6.setBounds(60, 30, 57, 57);
 
@@ -254,7 +252,7 @@ public class Vista extends JFrame
         jLabel5.setForeground(new Color(255, 141, 141));
         jLabel5.setText("Tipo de búsqueda:");
         PanelBusquedas2.add(jLabel5);
-        jLabel5.setBounds(10, 20, 120, 16);
+        jLabel5.setBounds(10, 20, 120, 30);
 
         jComboBox4.setEditable(true);
         jComboBox4.setFont(new Font("Dialog", 0, 12)); // NOI18N
@@ -263,18 +261,18 @@ public class Vista extends JFrame
         jComboBox4.setFocusable(false);
         jComboBox4.setOpaque(false);
         PanelBusquedas2.add(jComboBox4);
-        jComboBox4.setBounds(140, 20, 130, 20);
+        jComboBox4.setBounds(140, 20, 130, 30);
 
         jLabel6.setFont(new Font("Dialog", 0, 12)); // NOI18N
         jLabel6.setForeground(new Color(255, 141, 141));
         jLabel6.setText("Vértice:");
         PanelBusquedas2.add(jLabel6);
-        jLabel6.setBounds(10, 50, 50, 16);
+        jLabel6.setBounds(10, 60, 50, 30);
 
         jTextField3.setText(" ");
         jTextField3.setBorder(new MatteBorder(null));
         PanelBusquedas2.add(jTextField3);
-        jTextField3.setBounds(60, 50, 90, 30);
+        jTextField3.setBounds(60, 60, 90, 30);
 
         jButton4.setBackground(new Color(38, 166, 154));
         jButton4.setFont(new Font("Dialog", 0, 14)); // NOI18N
@@ -285,10 +283,10 @@ public class Vista extends JFrame
         jButton4.setCursor(new Cursor(Cursor.HAND_CURSOR));
         jButton4.setFocusPainted(false);
         PanelBusquedas2.add(jButton4);
-        jButton4.setBounds(160, 50, 110, 30);
+        jButton4.setBounds(160, 60, 110, 30);
 
         PanelContBusquedasRecorridos.add(PanelBusquedas2);
-        PanelBusquedas2.setBounds(0, 0, 280, 100);
+        PanelBusquedas2.setBounds(0, 0, 280, 110);
 
         PanelBusquedas3.setBackground(new Color(64, 64, 64));
         PanelBusquedas3.setBorder(BorderFactory.createTitledBorder(null, "Recorridos", TitledBorder.DEFAULT_JUSTIFICATION, TitledBorder.DEFAULT_POSITION, new Font("Dialog", 0, 12), new Color(38, 166, 154))); // NOI18N
@@ -317,7 +315,7 @@ public class Vista extends JFrame
         jButton11.setBounds(20, 30, 110, 40);
 
         PanelContBusquedasRecorridos.add(PanelBusquedas3);
-        PanelBusquedas3.setBounds(0, 100, 280, 100);
+        PanelBusquedas3.setBounds(0, 110, 280, 90);
 
         jPanel6.add(PanelContBusquedasRecorridos, BorderLayout.PAGE_END);
 
@@ -335,6 +333,10 @@ public class Vista extends JFrame
     private void jButton9ActionPerformed(ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton9ActionPerformed
+
+    private void jButton6ActionPerformed(ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+
+    }//GEN-LAST:event_jButton6ActionPerformed
 
 
     public ButtonGroup getGrupoBusqueda()
