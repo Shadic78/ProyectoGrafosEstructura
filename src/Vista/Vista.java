@@ -7,6 +7,10 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
 import javax.swing.DefaultComboBoxModel;
@@ -49,6 +53,7 @@ public class Vista extends JFrame
         grupoCreacionGrafo = new ButtonGroup();
         jSplitPane1 = new JSplitPane();
         jScrollPane1 = new JScrollPane();
+        ContainerpanelGraficoGrafo = new JPanel();
         panelGraficoGrafo = new JPanel();
         jPanel6 = new JPanel();
         PanelContVerticesAristas = new JPanel();
@@ -82,15 +87,22 @@ public class Vista extends JFrame
         setTitle("Grafos!");
         setMinimumSize(new Dimension(800, 600));
         setPreferredSize(new Dimension(1020, 672));
+        addComponentListener(new ComponentAdapter() {
+            public void componentResized(ComponentEvent evt) {
+                formComponentResized(evt);
+            }
+        });
 
         jSplitPane1.setDividerLocation(280);
 
-        panelGraficoGrafo.setBackground(new Color(232, 233, 234));
-        panelGraficoGrafo.setBorder(BorderFactory.createTitledBorder(null, "Grafo", TitledBorder.DEFAULT_JUSTIFICATION, TitledBorder.DEFAULT_POSITION, new Font("Dialog", 0, 12), new Color(38, 166, 154))); // NOI18N
-        panelGraficoGrafo.setMinimumSize(new Dimension(0, 0));
-        panelGraficoGrafo.setPreferredSize(new Dimension(700, 0));
-        panelGraficoGrafo.setLayout(new BorderLayout());
-        jScrollPane1.setViewportView(panelGraficoGrafo);
+        ContainerpanelGraficoGrafo.setBackground(new Color(64, 64, 64));
+        ContainerpanelGraficoGrafo.setBorder(BorderFactory.createTitledBorder(null, "Grafo", TitledBorder.DEFAULT_JUSTIFICATION, TitledBorder.DEFAULT_POSITION, new Font("Dialog", 0, 12), new Color(38, 166, 154))); // NOI18N
+        ContainerpanelGraficoGrafo.setMinimumSize(new Dimension(0, 0));
+        ContainerpanelGraficoGrafo.setPreferredSize(new Dimension(700, 0));
+        ContainerpanelGraficoGrafo.setLayout(new BorderLayout());
+        ContainerpanelGraficoGrafo.add(panelGraficoGrafo, BorderLayout.CENTER);
+
+        jScrollPane1.setViewportView(ContainerpanelGraficoGrafo);
 
         jSplitPane1.setRightComponent(jScrollPane1);
 
@@ -339,28 +351,24 @@ public class Vista extends JFrame
 
     }//GEN-LAST:event_jButton6ActionPerformed
 
+    private void formComponentResized(ComponentEvent evt) {//GEN-FIRST:event_formComponentResized
 
-    public ButtonGroup getGrupoBusqueda()
-    {
-        return grupoBusqueda;
+    }//GEN-LAST:event_formComponentResized
+
+    public JPanel getPanelGraficoGrafo() {
+        return ContainerpanelGraficoGrafo;
     }
 
-    public ButtonGroup getGrupoCreacionGrafo()
-    {
-        return grupoCreacionGrafo;
+    public JPanel getContainerpanelGraficoGrafo() {
+        return ContainerpanelGraficoGrafo;
     }
 
-    public ButtonGroup getGrupoRecorrido()
-    {
-        return grupoRecorrido;
-    }
-
-    public JPanel getPanelGraficoGrafo()
-    {
-        return panelGraficoGrafo;
+    public void setContainerpanelGraficoGrafo(JPanel ContainerpanelGraficoGrafo) {
+        this.ContainerpanelGraficoGrafo = ContainerpanelGraficoGrafo;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private JPanel ContainerpanelGraficoGrafo;
     private JPanel PanelAristas;
     private JPanel PanelBusquedas1;
     private JPanel PanelBusquedas2;
