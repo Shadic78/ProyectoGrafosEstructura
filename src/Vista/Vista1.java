@@ -26,20 +26,17 @@ import javax.swing.JScrollPane;
 import javax.swing.JSeparator;
 import javax.swing.JSplitPane;
 import javax.swing.JTextField;
-import javax.swing.SwingConstants;
 import javax.swing.WindowConstants;
-import javax.swing.border.BevelBorder;
-import javax.swing.border.MatteBorder;
 import javax.swing.border.TitledBorder;
 
 /**
  *
  * @author Nicolás
  */
-public class Vista extends JFrame
+public class Vista1 extends JFrame
 {
 
-    public Vista()
+    public Vista1()
     {
         initComponents();
     }
@@ -70,11 +67,9 @@ public class Vista extends JFrame
         jButton1 = new JButton();
         PanelContBusquedasRecorridos = new JPanel();
         PanelBusquedas1 = new JPanel();
-        jLabel7 = new JLabel();
         jButton3 = new JButton();
+        jTextField4 = new JTextField();
         jTextField5 = new JTextField();
-        jLabel8 = new JLabel();
-        jTextField7 = new JTextField();
         PanelBusquedas2 = new JPanel();
         jLabel5 = new JLabel();
         jComboBox4 = new JComboBox<>();
@@ -91,8 +86,7 @@ public class Vista extends JFrame
 
         jSplitPane1.setDividerLocation(280);
 
-        panelGraficoGrafo.setBackground(new Color(232, 233, 234));
-        panelGraficoGrafo.setBorder(BorderFactory.createTitledBorder(null, "Grafo", TitledBorder.DEFAULT_JUSTIFICATION, TitledBorder.DEFAULT_POSITION, new Font("Dialog", 0, 12), new Color(38, 166, 154))); // NOI18N
+        panelGraficoGrafo.setBackground(new Color(255, 255, 255));
         panelGraficoGrafo.setMinimumSize(new Dimension(0, 0));
         panelGraficoGrafo.setPreferredSize(new Dimension(0, 0));
         panelGraficoGrafo.setLayout(new BorderLayout());
@@ -103,6 +97,7 @@ public class Vista extends JFrame
         jPanel6.setLayout(new BorderLayout());
 
         PanelContVerticesAristas.setBackground(new Color(64, 64, 64));
+        PanelContVerticesAristas.setBorder(BorderFactory.createTitledBorder(null, "Edición", TitledBorder.DEFAULT_JUSTIFICATION, TitledBorder.DEFAULT_POSITION, new Font("Dialog", 0, 12), new Color(38, 156, 144))); // NOI18N
         PanelContVerticesAristas.setMinimumSize(new Dimension(280, 70));
         PanelContVerticesAristas.setPreferredSize(new Dimension(260, 220));
         PanelContVerticesAristas.setLayout(null);
@@ -202,15 +197,6 @@ public class Vista extends JFrame
         PanelBusquedas1.setBorder(BorderFactory.createTitledBorder(null, "Adyacencia", TitledBorder.DEFAULT_JUSTIFICATION, TitledBorder.DEFAULT_POSITION, new Font("Dialog", 0, 12), new Color(38, 166, 154))); // NOI18N
         PanelBusquedas1.setLayout(null);
 
-        jLabel7.setBackground(new Color(64, 64, 64));
-        jLabel7.setFont(new Font("Dialog", 0, 12)); // NOI18N
-        jLabel7.setForeground(new Color(255, 141, 141));
-        jLabel7.setHorizontalAlignment(SwingConstants.CENTER);
-        jLabel7.setText("Destino");
-        jLabel7.setOpaque(true);
-        PanelBusquedas1.add(jLabel7);
-        jLabel7.setBounds(160, 20, 100, 20);
-
         jButton3.setBackground(new Color(38, 166, 154));
         jButton3.setFont(new Font("Dialog", 0, 14)); // NOI18N
         jButton3.setForeground(new Color(255, 255, 255));
@@ -220,31 +206,18 @@ public class Vista extends JFrame
         jButton3.setCursor(new Cursor(Cursor.HAND_CURSOR));
         jButton3.setFocusPainted(false);
         PanelBusquedas1.add(jButton3);
-        jButton3.setBounds(80, 80, 110, 30);
+        jButton3.setBounds(80, 70, 110, 30);
+
+        jTextField4.setText(" ");
+        PanelBusquedas1.add(jTextField4);
+        jTextField4.setBounds(160, 30, 100, 30);
 
         jTextField5.setText(" ");
-        jTextField5.setToolTipText("Origen");
-        jTextField5.setBorder(new MatteBorder(null));
         PanelBusquedas1.add(jTextField5);
-        jTextField5.setBounds(160, 40, 100, 30);
-
-        jLabel8.setBackground(new Color(64, 64, 64));
-        jLabel8.setFont(new Font("Dialog", 0, 12)); // NOI18N
-        jLabel8.setForeground(new Color(255, 141, 141));
-        jLabel8.setHorizontalAlignment(SwingConstants.CENTER);
-        jLabel8.setText("Origen");
-        jLabel8.setOpaque(true);
-        PanelBusquedas1.add(jLabel8);
-        jLabel8.setBounds(30, 20, 100, 20);
-
-        jTextField7.setText(" ");
-        jTextField7.setToolTipText("Origen");
-        jTextField7.setBorder(new MatteBorder(null));
-        PanelBusquedas1.add(jTextField7);
-        jTextField7.setBounds(30, 40, 100, 30);
+        jTextField5.setBounds(30, 30, 100, 30);
 
         PanelContBusquedasRecorridos.add(PanelBusquedas1);
-        PanelBusquedas1.setBounds(0, 200, 280, 130);
+        PanelBusquedas1.setBounds(0, 220, 280, 110);
 
         PanelBusquedas2.setBackground(new Color(64, 64, 64));
         PanelBusquedas2.setBorder(BorderFactory.createTitledBorder(null, "Busquedas", TitledBorder.DEFAULT_JUSTIFICATION, TitledBorder.DEFAULT_POSITION, new Font("Dialog", 0, 12), new Color(38, 166, 154))); // NOI18N
@@ -272,7 +245,6 @@ public class Vista extends JFrame
         jLabel6.setBounds(10, 50, 50, 16);
 
         jTextField3.setText(" ");
-        jTextField3.setBorder(new MatteBorder(null));
         PanelBusquedas2.add(jTextField3);
         jTextField3.setBounds(60, 50, 90, 30);
 
@@ -288,7 +260,7 @@ public class Vista extends JFrame
         jButton4.setBounds(160, 50, 110, 30);
 
         PanelContBusquedasRecorridos.add(PanelBusquedas2);
-        PanelBusquedas2.setBounds(0, 0, 280, 100);
+        PanelBusquedas2.setBounds(0, 0, 280, 110);
 
         PanelBusquedas3.setBackground(new Color(64, 64, 64));
         PanelBusquedas3.setBorder(BorderFactory.createTitledBorder(null, "Recorridos", TitledBorder.DEFAULT_JUSTIFICATION, TitledBorder.DEFAULT_POSITION, new Font("Dialog", 0, 12), new Color(38, 166, 154))); // NOI18N
@@ -303,7 +275,7 @@ public class Vista extends JFrame
         jButton10.setCursor(new Cursor(Cursor.HAND_CURSOR));
         jButton10.setFocusPainted(false);
         PanelBusquedas3.add(jButton10);
-        jButton10.setBounds(150, 30, 110, 40);
+        jButton10.setBounds(150, 40, 110, 40);
 
         jButton11.setBackground(new Color(38, 166, 154));
         jButton11.setFont(new Font("Dialog", 0, 14)); // NOI18N
@@ -314,10 +286,10 @@ public class Vista extends JFrame
         jButton11.setCursor(new Cursor(Cursor.HAND_CURSOR));
         jButton11.setFocusPainted(false);
         PanelBusquedas3.add(jButton11);
-        jButton11.setBounds(20, 30, 110, 40);
+        jButton11.setBounds(20, 40, 110, 40);
 
         PanelContBusquedasRecorridos.add(PanelBusquedas3);
-        PanelBusquedas3.setBounds(0, 100, 280, 100);
+        PanelBusquedas3.setBounds(0, 110, 280, 110);
 
         jPanel6.add(PanelContBusquedasRecorridos, BorderLayout.PAGE_END);
 
@@ -382,14 +354,12 @@ public class Vista extends JFrame
     private JComboBox<String> jComboBox4;
     private JLabel jLabel5;
     private JLabel jLabel6;
-    private JLabel jLabel7;
-    private JLabel jLabel8;
     private JPanel jPanel6;
     private JScrollPane jScrollPane1;
     private JSplitPane jSplitPane1;
     private JTextField jTextField3;
+    private JTextField jTextField4;
     private JTextField jTextField5;
-    private JTextField jTextField7;
     private JPanel panelGraficoGrafo;
     // End of variables declaration//GEN-END:variables
 }

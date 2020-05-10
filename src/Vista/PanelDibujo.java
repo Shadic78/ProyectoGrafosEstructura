@@ -18,7 +18,7 @@ public class PanelDibujo extends JPanel {
     public ArrayList<Integer> coordY = new ArrayList<>();
 
     public PanelDibujo() {
-        this.setBackground(Color.WHITE);
+        this.setBackground(new Color(232, 233, 234));
     }
 
     @Override
