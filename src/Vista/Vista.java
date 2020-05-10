@@ -5,6 +5,7 @@ import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ComponentAdapter;
@@ -39,6 +40,7 @@ public class Vista extends JFrame
     public Vista()
     {
         initComponents();
+        setIconImage(Toolkit.getDefaultToolkit().getImage("img/Icono2.png"));        
     }
 
     /**
@@ -84,9 +86,9 @@ public class Vista extends JFrame
         jButton11 = new JButton();
 
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Grafos!");
+        setTitle("Edición de grafos");
         setMinimumSize(new Dimension(800, 600));
-        setPreferredSize(new Dimension(1020, 672));
+        setPreferredSize(new Dimension(1025, 672));
         addComponentListener(new ComponentAdapter() {
             public void componentResized(ComponentEvent evt) {
                 formComponentResized(evt);
