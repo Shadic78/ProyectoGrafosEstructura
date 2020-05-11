@@ -155,7 +155,7 @@
                     <Property name="useNullLayout" type="boolean" value="true"/>
                   </Layout>
                   <SubComponents>
-                    <Component class="javax.swing.JButton" name="jButton8">
+                    <Component class="javax.swing.JButton" name="BtnAgregarArista">
                       <Properties>
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                           <Image iconType="2" name="C:\Users\Equipo1\Desktop\Material\Button+GreenGray1.png"/>
@@ -228,7 +228,7 @@
                     <Property name="useNullLayout" type="boolean" value="true"/>
                   </Layout>
                   <SubComponents>
-                    <Component class="javax.swing.JButton" name="jButton6">
+                    <Component class="javax.swing.JButton" name="BtnAgregarVertice">
                       <Properties>
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                           <Image iconType="2" name="C:\Users\Equipo1\Desktop\Material\Button+GreenGray1.png"/>
@@ -245,7 +245,7 @@
                         </Property>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton6ActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BtnAgregarVerticeActionPerformed"/>
                       </Events>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">

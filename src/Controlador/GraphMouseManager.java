@@ -1,8 +1,13 @@
 package Controlador;
 
+import Excepciones.VerticeExisteException;
+import Excepciones.VerticeNoExisteException;
+import Modelo.Vertice;
 import Vista.PanelDibujo;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -10,6 +15,7 @@ import java.awt.event.MouseEvent;
  */
 public class GraphMouseManager extends MouseAdapter {
     private final PanelDibujo grafico;
+    private int xd = 0;
 
     public GraphMouseManager(PanelDibujo grafico) {
         this.grafico = grafico;
@@ -22,10 +28,21 @@ public class GraphMouseManager extends MouseAdapter {
 
     @Override
     public void mousePressed(MouseEvent e) {
-        grafico.coordX.add(e.getX());
-        grafico.coordY.add(e.getY());
+        try {
+            Vertice<String> vertice = new Vertice<String>("Vertice " + xd, e.getX(), e.getY());
+            xd++;
+            grafico.getGrafo().nuevoVertice(vertice);
+            if(xd > 1) {
+                try {
+                    grafico.getGrafo().union("Vertice " + (xd - 1), "Vertice " + (xd - 2));
+                } catch (VerticeNoExisteException ex) {
+                    Logger.getLogger(GraphMouseManager.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }            
+        } catch (VerticeExisteException ex) {
+            Logger.getLogger(GraphMouseManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
         grafico.repaint();
-        System.out.println("Presionado");
     }
 
 }

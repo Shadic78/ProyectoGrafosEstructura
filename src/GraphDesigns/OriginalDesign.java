@@ -5,9 +5,11 @@
  */
 package GraphDesigns;
 
+import Colores.ColoresVertices;
+import Colores.ConfiguracionColores;
 import Modelo.Grafo;
+import Modelo.Vertice;
 import java.awt.BasicStroke;
-import java.awt.Color;
 import java.awt.Graphics2D;
 
 /**
@@ -16,8 +18,8 @@ import java.awt.Graphics2D;
  */
 public class OriginalDesign extends GraphDesign {
 
-    public OriginalDesign(Grafo grafo) {
-        super(grafo);
+    public OriginalDesign(Grafo grafo, ConfiguracionColores colores) {
+        super(grafo, colores);
         configurar();
     }
     
@@ -29,22 +31,54 @@ public class OriginalDesign extends GraphDesign {
 
     @Override
     public void draw(Graphics2D g2d) {
-        setArcos(getGrafo().getArcos());
-        setVertices(getGrafo().getVertices());
+        arcos = grafo.getArcos();
+        vertices = grafo.getVertices();
+        int radio = DIAMETRO_VERTICES / 2;
         
-        // Arcos
-        for (int i = 0; i < getGrafo().getNumeroVertices(); i++) {
-            g2d.setColor(new Color(255, 141, 141));
-            g2d.setStroke(new BasicStroke(2));
-            g2d.drawLine(coordX.get(i - 1) + 22, coordY.get(i - 1) + 22, coordX.get(i) + 22, coordY.get(i) + 22);
-        }
-
-        for (int i = 0; i < coordX.size(); i++) {
-            g2d.setColor(new Color(70, 206, 205));
-            g2d.fillOval(coordX.get(i) - 4, coordY.get(i) - 4, 52, 52);
-            g2d.setColor(new Color(81, 237, 236));
-            g2d.fillOval(coordX.get(i), coordY.get(i), 44, 44);
+        dibujarArcos(g2d, radio);
+        dibujarVertices(g2d);
+     
+    }
+    
+    private void dibujarArcos(Graphics2D g2d, int radio) {
+        for (int i = 0; i < arcos.size(); i++) {
+            Vertice origen = arcos.get(i).getOrigen();
+            Vertice destino = arcos.get(i).getDestino();            
+            
+            g2d.setColor(colores.COLOR_ARISTA);
+            g2d.setStroke(new BasicStroke(GROSOR_ARISTA));
+            g2d.drawLine(
+                    origen.getCoords().getX() + radio,
+                    origen.getCoords().getY() + radio,
+                    destino.getCoords().getX() + radio,
+                    destino.getCoords().getY() + radio
+            );
         }        
+    }
+    
+    private void dibujarVertices(Graphics2D g2d) {
+        for (int i = 0; i < vertices.size(); i++) {
+            ColoresVertices color = colores.COLORES_VERTICES.get(i % colores.COLORES_VERTICES.size());
+            Vertice vertice = vertices.get(i);
+            System.out.println("Pintar: " + vertice.getCoords());
+            // Borde
+            g2d.setColor(color.getColorBorde());
+            g2d.fillOval(
+                    vertice.getCoords().getX() - GROSOR_BORDE, 
+                    vertice.getCoords().getY() - GROSOR_BORDE,
+                    DIAMETRO_VERTICES +  (GROSOR_BORDE * 2),
+                    DIAMETRO_VERTICES +  (GROSOR_BORDE * 2)                    
+            );
+            
+            // Relleno
+            g2d.setColor(color.getColorRelleno());
+            g2d.fillOval(
+                    vertice.getCoords().getX(),
+                    vertice.getCoords().getY(), 
+                    DIAMETRO_VERTICES,
+                    DIAMETRO_VERTICES
+            );
+        }           
     }
     
 }

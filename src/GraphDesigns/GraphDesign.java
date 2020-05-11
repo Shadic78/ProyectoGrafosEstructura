@@ -5,6 +5,7 @@
  */
 package GraphDesigns;
 
+import Colores.ConfiguracionColores;
 import Modelo.ArcoDoble;
 import Modelo.Grafo;
 import Modelo.Vertice;
@@ -16,15 +17,17 @@ import java.util.ArrayList;
  * @author Equipo1
  */
 public abstract class GraphDesign {
-    private int DIAMETRO_VERTICES;
-    private int GROSOR_BORDE;
-    private int GROSOR_ARISTA;
-    private ArrayList<ArcoDoble> arcos;
-    private ArrayList<Vertice> vertices;
-    private Grafo grafo;
+    protected int DIAMETRO_VERTICES;
+    protected int GROSOR_BORDE;
+    protected int GROSOR_ARISTA;
+    protected ConfiguracionColores colores;
+    protected ArrayList<ArcoDoble> arcos;
+    protected ArrayList<Vertice> vertices;
+    protected Grafo grafo;
 
-    public GraphDesign(Grafo grafo) {
+    public GraphDesign(Grafo grafo, ConfiguracionColores colores) {
         this.grafo = grafo;
+        this.colores = colores;
     }    
     
     public abstract void draw(Graphics2D g2d);
@@ -75,6 +78,14 @@ public abstract class GraphDesign {
 
     public void setVertices(ArrayList<Vertice> vertices) {
         this.vertices = vertices;
+    }
+
+    public ConfiguracionColores getColores() {
+        return colores;
+    }
+
+    public void setColores(ConfiguracionColores colores) {
+        this.colores = colores;
     }
       
 }

@@ -32,7 +32,7 @@ import javax.swing.border.TitledBorder;
 
 /**
  *
- * @author Nicolás
+ * @author Equipo1
  */
 public class Vista extends JFrame {
 
@@ -60,10 +60,10 @@ public class Vista extends JFrame {
         jPanel6 = new JPanel();
         PanelContVerticesAristas = new JPanel();
         PanelAristas = new JPanel();
-        jButton8 = new JButton();
+        BtnAgregarArista = new JButton();
         jButton9 = new JButton();
         PanelVertices = new JPanel();
-        jButton6 = new JButton();
+        BtnAgregarVertice = new JButton();
         jButton7 = new JButton();
         PanelCreacion = new JPanel();
         jComboBox1 = new JComboBox<>();
@@ -120,13 +120,13 @@ public class Vista extends JFrame {
         PanelAristas.setBorder(BorderFactory.createTitledBorder(null, "Aristas", TitledBorder.DEFAULT_JUSTIFICATION, TitledBorder.DEFAULT_POSITION, new Font("Dialog", 0, 12), new Color(38, 166, 154))); // NOI18N
         PanelAristas.setLayout(null);
 
-        jButton8.setIcon(new ImageIcon("C:\\Users\\Equipo1\\Desktop\\Material\\Button+GreenGray1.png")); // NOI18N
-        jButton8.setBorder(null);
-        jButton8.setBorderPainted(false);
-        jButton8.setCursor(new Cursor(Cursor.HAND_CURSOR));
-        jButton8.setPressedIcon(new ImageIcon("C:\\Users\\Equipo1\\Desktop\\Material\\Button+GreenGray2.png")); // NOI18N
-        PanelAristas.add(jButton8);
-        jButton8.setBounds(60, 30, 57, 57);
+        BtnAgregarArista.setIcon(new ImageIcon("C:\\Users\\Equipo1\\Desktop\\Material\\Button+GreenGray1.png")); // NOI18N
+        BtnAgregarArista.setBorder(null);
+        BtnAgregarArista.setBorderPainted(false);
+        BtnAgregarArista.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        BtnAgregarArista.setPressedIcon(new ImageIcon("C:\\Users\\Equipo1\\Desktop\\Material\\Button+GreenGray2.png")); // NOI18N
+        PanelAristas.add(BtnAgregarArista);
+        BtnAgregarArista.setBounds(60, 30, 57, 57);
 
         jButton9.setIcon(new ImageIcon("C:\\Users\\Equipo1\\Desktop\\Material\\ButtonRedGray1.png")); // NOI18N
         jButton9.setBorder(null);
@@ -148,18 +148,18 @@ public class Vista extends JFrame {
         PanelVertices.setBorder(BorderFactory.createTitledBorder(null, "Vértices", TitledBorder.DEFAULT_JUSTIFICATION, TitledBorder.DEFAULT_POSITION, new Font("Dialog", 0, 12), new Color(38, 166, 154))); // NOI18N
         PanelVertices.setLayout(null);
 
-        jButton6.setIcon(new ImageIcon("C:\\Users\\Equipo1\\Desktop\\Material\\Button+GreenGray1.png")); // NOI18N
-        jButton6.setBorder(null);
-        jButton6.setBorderPainted(false);
-        jButton6.setCursor(new Cursor(Cursor.HAND_CURSOR));
-        jButton6.setPressedIcon(new ImageIcon("C:\\Users\\Equipo1\\Desktop\\Material\\Button+GreenGray2.png")); // NOI18N
-        jButton6.addActionListener(new ActionListener() {
+        BtnAgregarVertice.setIcon(new ImageIcon("C:\\Users\\Equipo1\\Desktop\\Material\\Button+GreenGray1.png")); // NOI18N
+        BtnAgregarVertice.setBorder(null);
+        BtnAgregarVertice.setBorderPainted(false);
+        BtnAgregarVertice.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        BtnAgregarVertice.setPressedIcon(new ImageIcon("C:\\Users\\Equipo1\\Desktop\\Material\\Button+GreenGray2.png")); // NOI18N
+        BtnAgregarVertice.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                BtnAgregarVerticeActionPerformed(evt);
             }
         });
-        PanelVertices.add(jButton6);
-        jButton6.setBounds(60, 30, 57, 57);
+        PanelVertices.add(BtnAgregarVertice);
+        BtnAgregarVertice.setBounds(60, 30, 57, 57);
 
         jButton7.setIcon(new ImageIcon("C:\\Users\\Equipo1\\Desktop\\Material\\ButtonRedGray1.png")); // NOI18N
         jButton7.setBorder(null);
@@ -350,9 +350,9 @@ public class Vista extends JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton9ActionPerformed
 
-    private void jButton6ActionPerformed(ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+    private void BtnAgregarVerticeActionPerformed(ActionEvent evt) {//GEN-FIRST:event_BtnAgregarVerticeActionPerformed
 
-    }//GEN-LAST:event_jButton6ActionPerformed
+    }//GEN-LAST:event_BtnAgregarVerticeActionPerformed
 
     private void formComponentResized(ComponentEvent evt) {//GEN-FIRST:event_formComponentResized
 
@@ -370,7 +370,17 @@ public class Vista extends JFrame {
         this.ContainerpanelGraficoGrafo = ContainerpanelGraficoGrafo;
     }
 
+    public JButton getBtnAgregarVertice() {
+        return BtnAgregarVertice;
+    }
+
+    public JButton getBtnAgregarArista() {
+        return BtnAgregarArista;
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private JButton BtnAgregarArista;
+    private JButton BtnAgregarVertice;
     private JPanel ContainerpanelGraficoGrafo;
     private JPanel PanelAristas;
     private JPanel PanelBusquedas1;
@@ -388,9 +398,7 @@ public class Vista extends JFrame {
     private JButton jButton11;
     private JButton jButton3;
     private JButton jButton4;
-    private JButton jButton6;
     private JButton jButton7;
-    private JButton jButton8;
     private JButton jButton9;
     private JComboBox<String> jComboBox1;
     private JComboBox<String> jComboBox4;

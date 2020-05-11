@@ -125,6 +125,16 @@ public class GrafoMatriz<T> implements Grafo<T> {
         v.setNumVertice(numeroVertices);
         vertices[numeroVertices++] = v;
     }
+    
+    @Override
+    public void nuevoVertice(Vertice<T> vertice) throws VerticeExisteException {
+        boolean esta = getNumeroVertice(vertice.getElemento()) >= 0;
+        if (esta) {
+            throw new VerticeExisteException("El vertice existe");
+        }
+        vertice.setNumVertice(numeroVertices);
+        vertices[numeroVertices++] = vertice;
+    }    
 
     @Override
     public void borrarVertice(T elemento) throws VerticeNoExisteException {
@@ -298,7 +308,9 @@ public class GrafoMatriz<T> implements Grafo<T> {
     public ArrayList<Vertice> getVertices() {
         ArrayList<Vertice> verticesList = new ArrayList<>();
         for(int i = 0; i < vertices.length; i++) {
-            verticesList.add(vertices[i]);
+            if(vertices[i] != null) {
+                verticesList.add(vertices[i]);                
+            }
         }
         return verticesList;
     }

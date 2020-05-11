@@ -25,6 +25,8 @@ public interface Grafo <T> {
     public boolean adyacente(T elemento1, T elemento2) throws VerticeNoExisteException;
 
     public void nuevoVertice(T elemento) throws VerticeExisteException;
+    
+    public void nuevoVertice(Vertice<T> vertice) throws VerticeExisteException;    
 
     public void borrarVertice(T elemento) throws VerticeNoExisteException;
 

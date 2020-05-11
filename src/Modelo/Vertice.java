@@ -5,7 +5,6 @@
  */
 package Modelo;
 
-import java.awt.Point;
 import java.util.Objects;
 
 /**
@@ -15,18 +14,18 @@ import java.util.Objects;
 public class Vertice <T> {
     public int numVertice;
     public T elemento;
-    public Point coords;
+    public Punto coords;
 
     public Vertice(T elemento) {
         this.elemento = elemento;
         this.numVertice = -1;
-        this.coords = new Point(50, 50);        
+        this.coords = new Punto(50, 50);        
     } 
     
     public Vertice(T elemento, int x, int y) {
         this.elemento = elemento;
         this.numVertice = -1;
-        this.coords = new Point(x, y);
+        this.coords = new Punto(x, y);
     }        
 
     public int getNumVertice() {
@@ -45,11 +44,11 @@ public class Vertice <T> {
         this.elemento = elemento;
     }
 
-    public Point getCoords() {
+    public Punto getCoords() {
         return coords;
     }
 
-    public void setCoords(Point coords) {
+    public void setCoords(Punto coords) {
         this.coords = coords;
     }
     
