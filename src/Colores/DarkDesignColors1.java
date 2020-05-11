@@ -43,6 +43,11 @@ public class DarkDesignColors1 extends ConfiguracionColores {
                 new Color(85, 164, 242),
                 new Color(68, 111, 153)
         ));
+        
+        colores.add(new ColoresVertices(
+                new Color(165, 229, 88),
+                new Color(105, 169, 27)
+        ));            
 
         return colores;
     }

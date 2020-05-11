@@ -2,7 +2,7 @@ package Vista;
 
 import Colores.DarkDesignColors1;
 import GraphDesigns.GraphDesign;
-import GraphDesigns.OriginalDesign;
+import GraphDesigns.DarkDesign1;
 import Modelo.Grafo;
 import java.awt.BasicStroke;
 import java.awt.Color;
@@ -21,7 +21,7 @@ public class PanelDibujo extends JPanel {
 
     public PanelDibujo(Grafo grafo) {
         this.grafo = grafo;
-        this.design = new OriginalDesign(grafo, new DarkDesignColors1());
+        this.design = new DarkDesign1(grafo, new DarkDesignColors1());
         this.setBackground(design.getColores().COLOR_BACKGROUND);
     }
 
