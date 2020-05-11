@@ -88,7 +88,6 @@ public class Vista extends JFrame {
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setTitle("Edición de grafos");
         setMinimumSize(new Dimension(800, 600));
-        setPreferredSize(new Dimension(1025, 672));
         addComponentListener(new ComponentAdapter() {
             public void componentResized(ComponentEvent evt) {
                 formComponentResized(evt);
@@ -102,6 +101,8 @@ public class Vista extends JFrame {
         ContainerpanelGraficoGrafo.setMinimumSize(new Dimension(0, 0));
         ContainerpanelGraficoGrafo.setPreferredSize(new Dimension(700, 0));
         ContainerpanelGraficoGrafo.setLayout(new BorderLayout());
+
+        panelGraficoGrafo.setBackground(new Color(58, 76, 94));
         ContainerpanelGraficoGrafo.add(panelGraficoGrafo, BorderLayout.CENTER);
 
         jScrollPane1.setViewportView(ContainerpanelGraficoGrafo);

@@ -1,5 +1,6 @@
 package Vista;
 
+import Colores.ColoresGrafo;
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics;
@@ -18,7 +19,7 @@ public class PanelDibujo extends JPanel {
     public ArrayList<Integer> coordY = new ArrayList<>();
 
     public PanelDibujo() {
-        this.setBackground(new Color(232, 233, 234));
+        this.setBackground(ColoresGrafo.COLOR_BACKGROUND);
     }
 
     @Override
