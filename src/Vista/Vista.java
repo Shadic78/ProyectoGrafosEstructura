@@ -64,17 +64,17 @@ public class Vista extends JFrame {
         BtnBorrarArista = new JButton();
         PanelVertices = new JPanel();
         BtnAgregarVertice = new JButton();
-        jButton7 = new JButton();
+        BtnBorrarVertice = new JButton();
         PanelCreacion = new JPanel();
         jComboBox1 = new JComboBox<>();
         BtnCrearGrafo = new JButton();
         PanelContBusquedasRecorridos = new JPanel();
         PanelBusquedas1 = new JPanel();
         jLabel7 = new JLabel();
-        jButton3 = new JButton();
-        jTextField5 = new JTextField();
+        BtnAdyacencia = new JButton();
+        TxtAdyacenciaDestino = new JTextField();
         jLabel8 = new JLabel();
-        jTextField7 = new JTextField();
+        TxtAdyacenciaOrigen = new JTextField();
         PanelBusquedas2 = new JPanel();
         jLabel5 = new JLabel();
         jComboBox4 = new JComboBox<>();
@@ -161,18 +161,18 @@ public class Vista extends JFrame {
         PanelVertices.add(BtnAgregarVertice);
         BtnAgregarVertice.setBounds(60, 30, 57, 57);
 
-        jButton7.setIcon(new ImageIcon("C:\\Users\\Equipo1\\Desktop\\Material\\ButtonRedGray1.png")); // NOI18N
-        jButton7.setBorder(null);
-        jButton7.setBorderPainted(false);
-        jButton7.setCursor(new Cursor(Cursor.HAND_CURSOR));
-        jButton7.setPressedIcon(new ImageIcon("C:\\Users\\Equipo1\\Desktop\\Material\\ButtonRedGray2.png")); // NOI18N
-        jButton7.addActionListener(new ActionListener() {
+        BtnBorrarVertice.setIcon(new ImageIcon("C:\\Users\\Equipo1\\Desktop\\Material\\ButtonRedGray1.png")); // NOI18N
+        BtnBorrarVertice.setBorder(null);
+        BtnBorrarVertice.setBorderPainted(false);
+        BtnBorrarVertice.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        BtnBorrarVertice.setPressedIcon(new ImageIcon("C:\\Users\\Equipo1\\Desktop\\Material\\ButtonRedGray2.png")); // NOI18N
+        BtnBorrarVertice.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
-                jButton7ActionPerformed(evt);
+                BtnBorrarVerticeActionPerformed(evt);
             }
         });
-        PanelVertices.add(jButton7);
-        jButton7.setBounds(160, 30, 57, 57);
+        PanelVertices.add(BtnBorrarVertice);
+        BtnBorrarVertice.setBounds(160, 30, 57, 57);
 
         PanelContVerticesAristas.add(PanelVertices);
         PanelVertices.setBounds(0, 0, 280, 110);
@@ -225,22 +225,21 @@ public class Vista extends JFrame {
         PanelBusquedas1.add(jLabel7);
         jLabel7.setBounds(160, 20, 100, 20);
 
-        jButton3.setBackground(new Color(38, 166, 154));
-        jButton3.setFont(new Font("Dialog", 0, 14)); // NOI18N
-        jButton3.setForeground(new Color(255, 255, 255));
-        jButton3.setText("Comprobar");
-        jButton3.setBorder(null);
-        jButton3.setBorderPainted(false);
-        jButton3.setCursor(new Cursor(Cursor.HAND_CURSOR));
-        jButton3.setFocusPainted(false);
-        PanelBusquedas1.add(jButton3);
-        jButton3.setBounds(80, 80, 110, 30);
+        BtnAdyacencia.setBackground(new Color(38, 166, 154));
+        BtnAdyacencia.setFont(new Font("Dialog", 0, 14)); // NOI18N
+        BtnAdyacencia.setForeground(new Color(255, 255, 255));
+        BtnAdyacencia.setText("Comprobar");
+        BtnAdyacencia.setBorder(null);
+        BtnAdyacencia.setBorderPainted(false);
+        BtnAdyacencia.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        BtnAdyacencia.setFocusPainted(false);
+        PanelBusquedas1.add(BtnAdyacencia);
+        BtnAdyacencia.setBounds(80, 80, 110, 30);
 
-        jTextField5.setText(" ");
-        jTextField5.setToolTipText("Origen");
-        jTextField5.setBorder(new MatteBorder(null));
-        PanelBusquedas1.add(jTextField5);
-        jTextField5.setBounds(160, 40, 100, 30);
+        TxtAdyacenciaDestino.setToolTipText("Origen");
+        TxtAdyacenciaDestino.setBorder(new MatteBorder(null));
+        PanelBusquedas1.add(TxtAdyacenciaDestino);
+        TxtAdyacenciaDestino.setBounds(160, 40, 100, 30);
 
         jLabel8.setBackground(new Color(64, 64, 64));
         jLabel8.setFont(new Font("Dialog", 0, 12)); // NOI18N
@@ -251,11 +250,10 @@ public class Vista extends JFrame {
         PanelBusquedas1.add(jLabel8);
         jLabel8.setBounds(30, 20, 100, 20);
 
-        jTextField7.setText(" ");
-        jTextField7.setToolTipText("Origen");
-        jTextField7.setBorder(new MatteBorder(null));
-        PanelBusquedas1.add(jTextField7);
-        jTextField7.setBounds(30, 40, 100, 30);
+        TxtAdyacenciaOrigen.setToolTipText("Origen");
+        TxtAdyacenciaOrigen.setBorder(new MatteBorder(null));
+        PanelBusquedas1.add(TxtAdyacenciaOrigen);
+        TxtAdyacenciaOrigen.setBounds(30, 40, 100, 30);
 
         PanelContBusquedasRecorridos.add(PanelBusquedas1);
         PanelBusquedas1.setBounds(0, 200, 280, 130);
@@ -342,9 +340,9 @@ public class Vista extends JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton7ActionPerformed(ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+    private void BtnBorrarVerticeActionPerformed(ActionEvent evt) {//GEN-FIRST:event_BtnBorrarVerticeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton7ActionPerformed
+    }//GEN-LAST:event_BtnBorrarVerticeActionPerformed
 
     private void BtnBorrarAristaActionPerformed(ActionEvent evt) {//GEN-FIRST:event_BtnBorrarAristaActionPerformed
         // TODO add your handling code here:
@@ -386,10 +384,28 @@ public class Vista extends JFrame {
         return BtnBorrarArista;
     }
 
+    public JButton getBtnBorrarVertice() {
+        return BtnBorrarVertice;
+    }
+
+    public JButton getBtnAdyacencia() {
+        return BtnAdyacencia;
+    }
+
+    public JTextField getTxtAdyacenciaDestino() {
+        return TxtAdyacenciaDestino;
+    }
+
+    public JTextField getTxtAdyacenciaOrigen() {
+        return TxtAdyacenciaOrigen;
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private JButton BtnAdyacencia;
     private JButton BtnAgregarArista;
     private JButton BtnAgregarVertice;
     private JButton BtnBorrarArista;
+    private JButton BtnBorrarVertice;
     private JButton BtnCrearGrafo;
     private JPanel ContainerpanelGraficoGrafo;
     private JPanel PanelAristas;
@@ -400,14 +416,14 @@ public class Vista extends JFrame {
     private JPanel PanelContVerticesAristas;
     private JPanel PanelCreacion;
     private JPanel PanelVertices;
+    private JTextField TxtAdyacenciaDestino;
+    private JTextField TxtAdyacenciaOrigen;
     private ButtonGroup grupoBusqueda;
     private ButtonGroup grupoCreacionGrafo;
     private ButtonGroup grupoRecorrido;
     private JButton jButton10;
     private JButton jButton11;
-    private JButton jButton3;
     private JButton jButton4;
-    private JButton jButton7;
     private JComboBox<String> jComboBox1;
     private JComboBox<String> jComboBox4;
     private JLabel jLabel5;
@@ -418,8 +434,6 @@ public class Vista extends JFrame {
     private JScrollPane jScrollPane1;
     private JSplitPane jSplitPane1;
     private JTextField jTextField3;
-    private JTextField jTextField5;
-    private JTextField jTextField7;
     private JPanel panelGraficoGrafo;
     // End of variables declaration//GEN-END:variables
 }

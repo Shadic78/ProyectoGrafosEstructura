@@ -19,20 +19,22 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author Nicolás
+ * @author Equipo1
  */
-public class VistaController {
+public class ControladorVista {
     private final Vista vista;
     private PanelDibujo graficoGrafo;
     private GraphDesign design;
     private Grafo<String> grafo = null;
 
-    public VistaController(Vista vista) {
+    public ControladorVista(Vista vista) {
         this.vista = vista;
         this.vista.getBtnAgregarVertice().addActionListener(this::agregarVertice);
         this.vista.getBtnAgregarArista().addActionListener(this::agregarArista);
         this.vista.getBtnCrearGrafo().addActionListener(this::crearGrafo);
         this.vista.getBtnBorrarArista().addActionListener(this::borrarArista);
+        this.vista.getBtnBorrarVertice().addActionListener(this::borrarVertice);
+        this.vista.getBtnAdyacencia().addActionListener(this::comprobarAdyacencia);
     }
 
     private void iniciarPanel(Grafo grafo, GraphDesign design) {
@@ -72,6 +74,22 @@ public class VistaController {
         }
     }
     
+    private void borrarVertice(ActionEvent e) {
+        try {
+            if(this.grafo == null) {
+                throw new GrafoNoCreadoException();
+            }
+            String nombre = JOptionPane.showInputDialog(null, "Nombre del vértice a borrar:");
+            grafo.borrarVertice(nombre);
+            graficoGrafo.repaint();
+        }
+        catch (GrafoNoCreadoException ex) {
+            JOptionPane.showMessageDialog(null, ex.getMessage());
+        } catch (VerticeNoExisteException ex) {
+            JOptionPane.showMessageDialog(null, ex.getMessage());
+        }        
+    }
+    
     private void agregarArista(ActionEvent e) {
         String origen = JOptionPane.showInputDialog(null, "Vértice origen:");
         String destino = JOptionPane.showInputDialog(null, "Vértice destino:");
@@ -79,7 +97,7 @@ public class VistaController {
             grafo.union(origen, destino);
             graficoGrafo.repaint();
         } catch (VerticeNoExisteException ex) {
-            Logger.getLogger(VistaController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ControladorVista.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
@@ -99,7 +117,28 @@ public class VistaController {
         } catch (ArcoNoExisteException ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage());
         }
-        
+    }
+    
+    private void comprobarAdyacencia(ActionEvent e) {
+        try {
+            if(this.grafo == null) {
+                throw new GrafoNoCreadoException();                
+            }
+            String origen = vista.getTxtAdyacenciaOrigen().getText();
+            String destino = vista.getTxtAdyacenciaDestino().getText();
+            System.out.println("Origen: " + origen);
+            System.out.println("Destino: " + destino);
+            if(grafo.adyacente(origen, destino)) {
+                JOptionPane.showMessageDialog(null, "Los vertices son adyacentes");
+            }
+            else {
+                JOptionPane.showMessageDialog(null, "Los vertices no son adyacentes");                
+            }
+        } catch (GrafoNoCreadoException ex) {
+            JOptionPane.showMessageDialog(null, ex.getMessage());
+        } catch (VerticeNoExisteException ex) {
+            JOptionPane.showMessageDialog(null, ex.getMessage());
+        }
     }
     
     private void crearGrafo(ActionEvent e) {
