@@ -22,8 +22,8 @@ import java.awt.Rectangle;
  */
 public class DarkDesign1 extends GraphDesign {
 
-    public DarkDesign1(Grafo grafo, ConfiguracionColores colores) {
-        super(grafo, colores);
+    public DarkDesign1(ConfiguracionColores colores) {
+        super(colores);
         configurar();
     }
     

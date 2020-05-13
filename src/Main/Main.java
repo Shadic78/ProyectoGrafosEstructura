@@ -1,6 +1,8 @@
 package Main;
 
+import Colores.DarkDesignColors1;
 import Controlador.VistaController;
+import GraphDesigns.DarkDesign1;
 import Vista.Vista;
 import java.awt.EventQueue;
 
@@ -16,6 +18,7 @@ public class Main {
             vista.setLocationRelativeTo(null);
             vista.setVisible(true);
             VistaController vistaController = new VistaController(vista);
+            vistaController.setDesign(new DarkDesign1(new DarkDesignColors1()));
         });
     }
 

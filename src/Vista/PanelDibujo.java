@@ -19,9 +19,9 @@ public class PanelDibujo extends JPanel {
     private Grafo grafo;
     private GraphDesign design;
 
-    public PanelDibujo(Grafo grafo) {
+    public PanelDibujo(Grafo grafo, GraphDesign design) {
         this.grafo = grafo;
-        this.design = new DarkDesign1(grafo, new DarkDesignColors1());
+        this.design = design;
         this.setBackground(design.getColores().COLOR_BACKGROUND);
     }
 
@@ -31,6 +31,10 @@ public class PanelDibujo extends JPanel {
 
     public void setGrafo(Grafo grafo) {
         this.grafo = grafo;
+    }
+
+    public GraphDesign getDesign() {
+        return design;
     }
 
     @Override

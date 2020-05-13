@@ -25,8 +25,7 @@ public abstract class GraphDesign {
     protected ArrayList<Vertice> vertices;
     protected Grafo grafo;
 
-    public GraphDesign(Grafo grafo, ConfiguracionColores colores) {
-        this.grafo = grafo;
+    public GraphDesign(ConfiguracionColores colores) {
         this.colores = colores;
     }    
     

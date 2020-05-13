@@ -1,8 +1,10 @@
 package Controlador;
 
+import Excepciones.GrafoNoCreadoException;
 import Excepciones.VerticeExisteException;
 import Excepciones.VerticeNoExisteException;
 import GrafoMatriz.GrafoMatriz;
+import GraphDesigns.GraphDesign;
 import Modelo.Grafo;
 import Modelo.Random;
 import Modelo.Vertice;
@@ -21,31 +23,38 @@ import javax.swing.JOptionPane;
 public class VistaController {
     private final Vista vista;
     private PanelDibujo graficoGrafo;
-    private Grafo<String> grafo;
+    private GraphDesign design;
+    private Grafo<String> grafo = null;
 
     public VistaController(Vista vista) {
         this.vista = vista;
         this.vista.getBtnAgregarVertice().addActionListener(this::agregarVertice);
         this.vista.getBtnAgregarArista().addActionListener(this::agregarArista);
-        initComponents();
+        this.vista.getBtnCrearGrafo().addActionListener(this::crearGrafo);
     }
 
-    private void initComponents() {
-        iniciarPanel();
-    }
+    private void iniciarPanel(Grafo grafo, GraphDesign design) {
+        if(this.graficoGrafo == null) {
+            this.graficoGrafo = new PanelDibujo(grafo, design);         
+            vista.getPanelGraficoGrafo().add(graficoGrafo, BorderLayout.CENTER);
 
-    private void iniciarPanel() {
-        this.grafo = new GrafoMatriz<String>();
-        this.graficoGrafo = new PanelDibujo(grafo);
-        vista.getPanelGraficoGrafo().add(graficoGrafo, BorderLayout.CENTER);
-
-        GraphMouseManager graphMouseManager = new GraphMouseManager(graficoGrafo);
-        graficoGrafo.addMouseListener(graphMouseManager);
-        graficoGrafo.addMouseMotionListener(graphMouseManager);
+            GraphMouseManager graphMouseManager = new GraphMouseManager(graficoGrafo);
+            graficoGrafo.addMouseListener(graphMouseManager);
+            graficoGrafo.addMouseMotionListener(graphMouseManager);            
+        }
+        else {
+            this.graficoGrafo.setGrafo(grafo);
+            this.design.setGrafo(grafo);
+            this.graficoGrafo.repaint();
+        }
+        vista.validate();
     }
     
     private void agregarVertice(ActionEvent e) {
         try {
+            if(this.grafo == null) {
+                throw new GrafoNoCreadoException();
+            }
             String nombre = JOptionPane.showInputDialog(null, "Nombre del vértice:");
             Vertice v = new Vertice(
                     nombre, 
@@ -55,7 +64,9 @@ public class VistaController {
             grafo.nuevoVertice(v);
             graficoGrafo.repaint();
         } catch (VerticeExisteException ex) {
-            Logger.getLogger(VistaController.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, ex.getMessage());
+        } catch (GrafoNoCreadoException ex) {
+            JOptionPane.showMessageDialog(null, ex.getMessage());
         }
     }
     
@@ -68,6 +79,17 @@ public class VistaController {
         } catch (VerticeNoExisteException ex) {
             Logger.getLogger(VistaController.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+    
+    private void crearGrafo(ActionEvent e) {
+        JOptionPane.showMessageDialog(null, "Se creo el grafo");
+        this.grafo = new GrafoMatriz();
+        this.design.setGrafo(grafo);
+        iniciarPanel(grafo, design);
+    }
+
+    public void setDesign(GraphDesign design) {
+        this.design = design;
     }
 
 }

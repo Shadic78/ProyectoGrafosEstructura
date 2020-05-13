@@ -67,7 +67,7 @@ public class Vista extends JFrame {
         jButton7 = new JButton();
         PanelCreacion = new JPanel();
         jComboBox1 = new JComboBox<>();
-        jButton1 = new JButton();
+        BtnCrearGrafo = new JButton();
         PanelContBusquedasRecorridos = new JPanel();
         PanelBusquedas1 = new JPanel();
         jLabel7 = new JLabel();
@@ -194,16 +194,16 @@ public class Vista extends JFrame {
         PanelCreacion.add(jComboBox1);
         jComboBox1.setBounds(10, 20, 150, 50);
 
-        jButton1.setBackground(new Color(38, 166, 154));
-        jButton1.setFont(new Font("Dialog", 0, 14)); // NOI18N
-        jButton1.setForeground(new Color(255, 255, 255));
-        jButton1.setText("Crear");
-        jButton1.setBorder(null);
-        jButton1.setBorderPainted(false);
-        jButton1.setCursor(new Cursor(Cursor.HAND_CURSOR));
-        jButton1.setFocusPainted(false);
-        PanelCreacion.add(jButton1);
-        jButton1.setBounds(170, 37, 100, 30);
+        BtnCrearGrafo.setBackground(new Color(38, 166, 154));
+        BtnCrearGrafo.setFont(new Font("Dialog", 0, 14)); // NOI18N
+        BtnCrearGrafo.setForeground(new Color(255, 255, 255));
+        BtnCrearGrafo.setText("Crear");
+        BtnCrearGrafo.setBorder(null);
+        BtnCrearGrafo.setBorderPainted(false);
+        BtnCrearGrafo.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        BtnCrearGrafo.setFocusPainted(false);
+        PanelCreacion.add(BtnCrearGrafo);
+        BtnCrearGrafo.setBounds(170, 37, 100, 30);
 
         jPanel6.add(PanelCreacion, BorderLayout.PAGE_START);
 
@@ -378,9 +378,14 @@ public class Vista extends JFrame {
         return BtnAgregarArista;
     }
 
+    public JButton getBtnCrearGrafo() {
+        return BtnCrearGrafo;
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private JButton BtnAgregarArista;
     private JButton BtnAgregarVertice;
+    private JButton BtnCrearGrafo;
     private JPanel ContainerpanelGraficoGrafo;
     private JPanel PanelAristas;
     private JPanel PanelBusquedas1;
@@ -393,7 +398,6 @@ public class Vista extends JFrame {
     private ButtonGroup grupoBusqueda;
     private ButtonGroup grupoCreacionGrafo;
     private ButtonGroup grupoRecorrido;
-    private JButton jButton1;
     private JButton jButton10;
     private JButton jButton11;
     private JButton jButton3;
