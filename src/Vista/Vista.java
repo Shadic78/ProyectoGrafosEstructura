@@ -61,7 +61,7 @@ public class Vista extends JFrame {
         PanelContVerticesAristas = new JPanel();
         PanelAristas = new JPanel();
         BtnAgregarArista = new JButton();
-        jButton9 = new JButton();
+        BtnBorrarArista = new JButton();
         PanelVertices = new JPanel();
         BtnAgregarVertice = new JButton();
         jButton7 = new JButton();
@@ -128,18 +128,18 @@ public class Vista extends JFrame {
         PanelAristas.add(BtnAgregarArista);
         BtnAgregarArista.setBounds(60, 30, 57, 57);
 
-        jButton9.setIcon(new ImageIcon("C:\\Users\\Equipo1\\Desktop\\Material\\ButtonRedGray1.png")); // NOI18N
-        jButton9.setBorder(null);
-        jButton9.setBorderPainted(false);
-        jButton9.setCursor(new Cursor(Cursor.HAND_CURSOR));
-        jButton9.setPressedIcon(new ImageIcon("C:\\Users\\Equipo1\\Desktop\\Material\\ButtonRedGray2.png")); // NOI18N
-        jButton9.addActionListener(new ActionListener() {
+        BtnBorrarArista.setIcon(new ImageIcon("C:\\Users\\Equipo1\\Desktop\\Material\\ButtonRedGray1.png")); // NOI18N
+        BtnBorrarArista.setBorder(null);
+        BtnBorrarArista.setBorderPainted(false);
+        BtnBorrarArista.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        BtnBorrarArista.setPressedIcon(new ImageIcon("C:\\Users\\Equipo1\\Desktop\\Material\\ButtonRedGray2.png")); // NOI18N
+        BtnBorrarArista.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
-                jButton9ActionPerformed(evt);
+                BtnBorrarAristaActionPerformed(evt);
             }
         });
-        PanelAristas.add(jButton9);
-        jButton9.setBounds(160, 30, 57, 57);
+        PanelAristas.add(BtnBorrarArista);
+        BtnBorrarArista.setBounds(160, 30, 57, 57);
 
         PanelContVerticesAristas.add(PanelAristas);
         PanelAristas.setBounds(0, 110, 280, 110);
@@ -346,9 +346,9 @@ public class Vista extends JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton7ActionPerformed
 
-    private void jButton9ActionPerformed(ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+    private void BtnBorrarAristaActionPerformed(ActionEvent evt) {//GEN-FIRST:event_BtnBorrarAristaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton9ActionPerformed
+    }//GEN-LAST:event_BtnBorrarAristaActionPerformed
 
     private void BtnAgregarVerticeActionPerformed(ActionEvent evt) {//GEN-FIRST:event_BtnAgregarVerticeActionPerformed
 
@@ -382,9 +382,14 @@ public class Vista extends JFrame {
         return BtnCrearGrafo;
     }
 
+    public JButton getBtnBorrarArista() {
+        return BtnBorrarArista;
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private JButton BtnAgregarArista;
     private JButton BtnAgregarVertice;
+    private JButton BtnBorrarArista;
     private JButton BtnCrearGrafo;
     private JPanel ContainerpanelGraficoGrafo;
     private JPanel PanelAristas;
@@ -403,7 +408,6 @@ public class Vista extends JFrame {
     private JButton jButton3;
     private JButton jButton4;
     private JButton jButton7;
-    private JButton jButton9;
     private JComboBox<String> jComboBox1;
     private JComboBox<String> jComboBox4;
     private JLabel jLabel5;

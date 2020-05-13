@@ -1,5 +1,6 @@
 package Controlador;
 
+import Excepciones.ArcoNoExisteException;
 import Excepciones.GrafoNoCreadoException;
 import Excepciones.VerticeExisteException;
 import Excepciones.VerticeNoExisteException;
@@ -31,6 +32,7 @@ public class VistaController {
         this.vista.getBtnAgregarVertice().addActionListener(this::agregarVertice);
         this.vista.getBtnAgregarArista().addActionListener(this::agregarArista);
         this.vista.getBtnCrearGrafo().addActionListener(this::crearGrafo);
+        this.vista.getBtnBorrarArista().addActionListener(this::borrarArista);
     }
 
     private void iniciarPanel(Grafo grafo, GraphDesign design) {
@@ -79,6 +81,25 @@ public class VistaController {
         } catch (VerticeNoExisteException ex) {
             Logger.getLogger(VistaController.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+    
+    private void borrarArista(ActionEvent e) {
+        try {
+            if(this.grafo == null) {
+                throw new GrafoNoCreadoException();                
+            }
+            String origen = JOptionPane.showInputDialog(null, "Vértice origen:");
+            String destino = JOptionPane.showInputDialog(null, "Vértice destino:");   
+            grafo.borrarArco(origen, destino);
+            graficoGrafo.repaint();
+        } catch (GrafoNoCreadoException ex) {
+            JOptionPane.showMessageDialog(null, ex.getMessage());
+        } catch (VerticeNoExisteException ex) {
+            JOptionPane.showMessageDialog(null, ex.getMessage());
+        } catch (ArcoNoExisteException ex) {
+            JOptionPane.showMessageDialog(null, ex.getMessage());
+        }
+        
     }
     
     private void crearGrafo(ActionEvent e) {
