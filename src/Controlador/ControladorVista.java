@@ -11,7 +11,6 @@ import Modelo.Random;
 import Modelo.Vertice;
 import Vista.PanelDibujo;
 import Vista.Vista;
-import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -35,12 +34,13 @@ public class ControladorVista {
         this.vista.getBtnBorrarArista().addActionListener(this::borrarArista);
         this.vista.getBtnBorrarVertice().addActionListener(this::borrarVertice);
         this.vista.getBtnAdyacencia().addActionListener(this::comprobarAdyacencia);
+        this.vista.getBtnVerticeBusqueda().addActionListener(this::buscarVertice);
     }
 
     private void iniciarPanel(Grafo grafo, GraphDesign design) {
         if(this.graficoGrafo == null) {
             this.graficoGrafo = new PanelDibujo(grafo, design);         
-            vista.getPanelGraficoGrafo().add(graficoGrafo, BorderLayout.CENTER);
+            vista.getPanelGraficoGrafo().add(graficoGrafo, null);
 
             GraphMouseManager graphMouseManager = new GraphMouseManager(graficoGrafo);
             graficoGrafo.addMouseListener(graphMouseManager);
@@ -137,7 +137,7 @@ public class ControladorVista {
         } catch (GrafoNoCreadoException ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage());
         } catch (VerticeNoExisteException ex) {
-            JOptionPane.showMessageDialog(null, ex.getMessage());
+            JOptionPane.showMessageDialog(null, "Uno de los vertices no existe");
         }
     }
     
@@ -146,6 +146,27 @@ public class ControladorVista {
         this.grafo = new GrafoMatriz();
         this.design.setGrafo(grafo);
         iniciarPanel(grafo, design);
+    }
+    
+    private void buscarVertice(ActionEvent e) {
+        String nombreVertice = vista.getTxtVerticeBusqueda().getText();
+        String tipoBusqueda = vista.getComboTipoBusqueda().getActionCommand();
+        try {
+            if (tipoBusqueda.equals("Anchura")) {
+                if(grafo.buscarAmplitud(nombreVertice)) {
+                    JOptionPane.showMessageDialog(null, "Se encontro el vértice");
+                }
+                else {
+                    JOptionPane.showMessageDialog(null, "No se encontro el vértice");
+                }
+            } else if (grafo.buscarProfundidad(nombreVertice)) {
+                JOptionPane.showMessageDialog(null, "Se encontro el vértice");
+            } else {
+                JOptionPane.showMessageDialog(null, "No se encontro el vértice");
+            }
+        } catch (VerticeNoExisteException ex) {
+            JOptionPane.showMessageDialog(null, "Uno de los vertices no existe");
+        }
     }
 
     public void setDesign(GraphDesign design) {

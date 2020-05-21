@@ -184,7 +184,11 @@ public class GrafoMatriz<T> implements Grafo<T> {
 
     @Override
     public boolean buscarProfundidad(T elemento) throws VerticeNoExisteException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        boolean encontrado = true;
+        if(this.recorrerProfundidad().indexOf(elemento) < 0) {
+            encontrado = false;
+        }
+        return encontrado;
     }
 
     @Override
@@ -227,39 +231,67 @@ public class GrafoMatriz<T> implements Grafo<T> {
     }
 
     @Override
-    public void recorrerAmplitud() throws VerticeNoExisteException {
-        //numero del vertice inicial
-        int vi = 0;
-        //Estructuras para el algortimo
-        Boolean procesados[] = new Boolean[numeroVertices];
-        Arrays.fill(procesados, false);
-        Queue<Integer> colaNumVertices = new ArrayDeque<>();
-        //Paso 1 Marcar como prodesado el vertice inicial
-        procesados[vi] = true;
-        //Pasa 2 meter el vertice inicial a la cola
-        colaNumVertices.add(vi);
-        //Paso repetir paso 4 y paso 5 mientras la cola no este vacía
-        while (!colaNumVertices.isEmpty()) {
-            //paso 4 visitar el vertice del frente de la cola
-            int verticeActual = colaNumVertices.remove();
+    public ArrayList<T> recorrerAmplitud() throws VerticeNoExisteException {
+        int inicio = 0;
+        ArrayList<Vertice> colaRecorrido = new ArrayList<Vertice>();
+        ArrayList<T> verticesRecorridos = new ArrayList<>();      
+        if (!isEmpty()) {
+            // Meter en la cola y procesar el vertice de inicio
+            colaRecorrido.add(0, vertices[inicio]);
+            verticesRecorridos.add(vertices[inicio].getElemento());
 
-            //Impresion en pantalla de la visita de vertices
-            System.out.println(vertices[verticeActual]);
-
-            //paso 5 agregar todos los vertices adyacentes y que no esten procesados a la cola y marcarlos como procesados
-            for (int i = 0; i < numeroVertices; i++) {
-                if (adyacente(verticeActual, i) && !procesados[i]) {
-                    colaNumVertices.add(i);
-                    procesados[i] = true;
+            while (!colaRecorrido.isEmpty()) {
+                Vertice siguienteVertice = colaRecorrido.remove(0);
+                //System.out.println(siguienteVertice.getNombre());
+                for (int i = 0; i < matrizAdyacencia[siguienteVertice.getNumVertice()].length; i++) {
+                    if (matrizAdyacencia[siguienteVertice.getNumVertice()][i] == 1 && !verticesRecorridos.contains(vertices[i])) {
+                        verticesRecorridos.add(vertices[i].getElemento());
+                        colaRecorrido.add(colaRecorrido.size(), vertices[i]);
+                    }
                 }
             }
-
         }
+        return verticesRecorridos;
     }
 
     @Override
-    public void recorrerProfundidad() throws VerticeNoExisteException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public ArrayList<T> recorrerProfundidad() {
+        return recorridoProfundidad(0);
+    }
+
+    public ArrayList<T> recorridoProfundidad(int numeroVertice) {
+        ArrayList<T> recorrido = new ArrayList<>();
+        ArrayList<Vertice<T>> pila = new ArrayList<>();
+        ArrayList<Vertice<T>> verticesRecorridos = new ArrayList<>();
+
+        if (!isEmpty()) {
+            pila.add(vertices[numeroVertice]);
+            verticesRecorridos.add(vertices[numeroVertice]);
+        }
+
+        return recorridoProfundidad(pila, verticesRecorridos, recorrido);
+    }
+
+    private ArrayList<T> recorridoProfundidad(ArrayList<Vertice<T>> pila, ArrayList<Vertice<T>> verticesRecorridos, ArrayList<T> recorrido) {
+        if (!pila.isEmpty()) {
+            Vertice<T> verticeActual = pila.remove(pila.size() - 1);
+
+            for (int i = 0; i < matrizAdyacencia[verticeActual.getNumVertice()].length; i++) {
+                if (matrizAdyacencia[verticeActual.getNumVertice()][i] == 1 && !verticesRecorridos.contains(vertices[i])) {
+                    pila.add(vertices[i]);
+                    verticesRecorridos.add(vertices[i]);
+                }
+            }
+
+            recorrido.add(verticeActual.getElemento());
+            recorridoProfundidad(pila, verticesRecorridos, recorrido);
+        }
+
+        return recorrido;
+    }
+
+    public boolean isEmpty() {
+        return numeroVertices == 0;
     }
 
     @Override
@@ -294,7 +326,7 @@ public class GrafoMatriz<T> implements Grafo<T> {
     @Override
     public ArrayList<ArcoDoble> getArcos() {
         ArrayList<ArcoDoble> arcos = new ArrayList<>();
-        for(int i = 0; i < numeroVertices; i++) {
+        for (int i = 0; i < numeroVertices; i++) {
             for (int j = 0; j < numeroVertices; j++) {
                 if(matrizAdyacencia[i][j] == 1) {
                     arcos.add(new ArcoDoble(vertices[i], vertices[j]));

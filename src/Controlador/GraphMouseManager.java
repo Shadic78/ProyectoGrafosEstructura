@@ -3,11 +3,14 @@ package Controlador;
 import Excepciones.VerticeExisteException;
 import Modelo.Vertice;
 import Vista.PanelDibujo;
+import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 /**
  *

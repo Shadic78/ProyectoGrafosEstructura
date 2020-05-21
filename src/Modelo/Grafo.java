@@ -36,9 +36,9 @@ public interface Grafo <T> {
 
     public boolean buscarAmplitud(T elemento) throws VerticeNoExisteException;
 
-    public void recorrerAmplitud() throws VerticeNoExisteException;
+    public ArrayList<T> recorrerAmplitud() throws VerticeNoExisteException;
 
-    public void recorrerProfundidad() throws VerticeNoExisteException;
+    public ArrayList<T> recorrerProfundidad() throws VerticeNoExisteException;
 
     public int getNumeroVertices();
 

@@ -77,10 +77,10 @@ public class Vista extends JFrame {
         TxtAdyacenciaOrigen = new JTextField();
         PanelBusquedas2 = new JPanel();
         jLabel5 = new JLabel();
-        jComboBox4 = new JComboBox<>();
+        ComboTipoBusqueda = new JComboBox<>();
         jLabel6 = new JLabel();
-        jTextField3 = new JTextField();
-        jButton4 = new JButton();
+        BtnVerticeBusqueda = new JButton();
+        TxtVerticeBusqueda = new JTextField();
         PanelBusquedas3 = new JPanel();
         jButton10 = new JButton();
         jButton11 = new JButton();
@@ -120,19 +120,19 @@ public class Vista extends JFrame {
         PanelAristas.setBorder(BorderFactory.createTitledBorder(null, "Aristas", TitledBorder.DEFAULT_JUSTIFICATION, TitledBorder.DEFAULT_POSITION, new Font("Dialog", 0, 12), new Color(38, 166, 154))); // NOI18N
         PanelAristas.setLayout(null);
 
-        BtnAgregarArista.setIcon(new ImageIcon("C:\\Users\\Equipo1\\Desktop\\Material\\Button+GreenGray1.png")); // NOI18N
+        BtnAgregarArista.setIcon(new ImageIcon("C:\\Users\\Equipo1\\Desktop\\ProyectoUnidadGrafos\\img\\Button+GreenGray1.png")); // NOI18N
         BtnAgregarArista.setBorder(null);
         BtnAgregarArista.setBorderPainted(false);
         BtnAgregarArista.setCursor(new Cursor(Cursor.HAND_CURSOR));
-        BtnAgregarArista.setPressedIcon(new ImageIcon("C:\\Users\\Equipo1\\Desktop\\Material\\Button+GreenGray2.png")); // NOI18N
+        BtnAgregarArista.setPressedIcon(new ImageIcon("C:\\Users\\Equipo1\\Desktop\\ProyectoUnidadGrafos\\img\\Button+GreenGray2.png")); // NOI18N
         PanelAristas.add(BtnAgregarArista);
         BtnAgregarArista.setBounds(60, 30, 57, 57);
 
-        BtnBorrarArista.setIcon(new ImageIcon("C:\\Users\\Equipo1\\Desktop\\Material\\ButtonRedGray1.png")); // NOI18N
+        BtnBorrarArista.setIcon(new ImageIcon("C:\\Users\\Equipo1\\Desktop\\ProyectoUnidadGrafos\\img\\ButtonRedGray1.png")); // NOI18N
         BtnBorrarArista.setBorder(null);
         BtnBorrarArista.setBorderPainted(false);
         BtnBorrarArista.setCursor(new Cursor(Cursor.HAND_CURSOR));
-        BtnBorrarArista.setPressedIcon(new ImageIcon("C:\\Users\\Equipo1\\Desktop\\Material\\ButtonRedGray2.png")); // NOI18N
+        BtnBorrarArista.setPressedIcon(new ImageIcon("C:\\Users\\Equipo1\\Desktop\\ProyectoUnidadGrafos\\img\\ButtonRedGray2.png")); // NOI18N
         BtnBorrarArista.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
                 BtnBorrarAristaActionPerformed(evt);
@@ -148,11 +148,11 @@ public class Vista extends JFrame {
         PanelVertices.setBorder(BorderFactory.createTitledBorder(null, "Vértices", TitledBorder.DEFAULT_JUSTIFICATION, TitledBorder.DEFAULT_POSITION, new Font("Dialog", 0, 12), new Color(38, 166, 154))); // NOI18N
         PanelVertices.setLayout(null);
 
-        BtnAgregarVertice.setIcon(new ImageIcon("C:\\Users\\Equipo1\\Desktop\\Material\\Button+GreenGray1.png")); // NOI18N
+        BtnAgregarVertice.setIcon(new ImageIcon("C:\\Users\\Equipo1\\Desktop\\ProyectoUnidadGrafos\\img\\Button+GreenGray1.png")); // NOI18N
         BtnAgregarVertice.setBorder(null);
         BtnAgregarVertice.setBorderPainted(false);
         BtnAgregarVertice.setCursor(new Cursor(Cursor.HAND_CURSOR));
-        BtnAgregarVertice.setPressedIcon(new ImageIcon("C:\\Users\\Equipo1\\Desktop\\Material\\Button+GreenGray2.png")); // NOI18N
+        BtnAgregarVertice.setPressedIcon(new ImageIcon("C:\\Users\\Equipo1\\Desktop\\ProyectoUnidadGrafos\\img\\Button+GreenGray2.png")); // NOI18N
         BtnAgregarVertice.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
                 BtnAgregarVerticeActionPerformed(evt);
@@ -161,11 +161,11 @@ public class Vista extends JFrame {
         PanelVertices.add(BtnAgregarVertice);
         BtnAgregarVertice.setBounds(60, 30, 57, 57);
 
-        BtnBorrarVertice.setIcon(new ImageIcon("C:\\Users\\Equipo1\\Desktop\\Material\\ButtonRedGray1.png")); // NOI18N
+        BtnBorrarVertice.setIcon(new ImageIcon("C:\\Users\\Equipo1\\Desktop\\ProyectoUnidadGrafos\\img\\ButtonRedGray1.png")); // NOI18N
         BtnBorrarVertice.setBorder(null);
         BtnBorrarVertice.setBorderPainted(false);
         BtnBorrarVertice.setCursor(new Cursor(Cursor.HAND_CURSOR));
-        BtnBorrarVertice.setPressedIcon(new ImageIcon("C:\\Users\\Equipo1\\Desktop\\Material\\ButtonRedGray2.png")); // NOI18N
+        BtnBorrarVertice.setPressedIcon(new ImageIcon("C:\\Users\\Equipo1\\Desktop\\ProyectoUnidadGrafos\\img\\ButtonRedGray2.png")); // NOI18N
         BtnBorrarVertice.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
                 BtnBorrarVerticeActionPerformed(evt);
@@ -268,14 +268,14 @@ public class Vista extends JFrame {
         PanelBusquedas2.add(jLabel5);
         jLabel5.setBounds(10, 20, 120, 30);
 
-        jComboBox4.setEditable(true);
-        jComboBox4.setFont(new Font("Dialog", 0, 12)); // NOI18N
-        jComboBox4.setModel(new DefaultComboBoxModel<>(new String[] { "Anchura", "Profundidad" }));
-        jComboBox4.setBorder(null);
-        jComboBox4.setFocusable(false);
-        jComboBox4.setOpaque(false);
-        PanelBusquedas2.add(jComboBox4);
-        jComboBox4.setBounds(140, 20, 130, 30);
+        ComboTipoBusqueda.setEditable(true);
+        ComboTipoBusqueda.setFont(new Font("Dialog", 0, 12)); // NOI18N
+        ComboTipoBusqueda.setModel(new DefaultComboBoxModel<>(new String[] { "Anchura", "Profundidad" }));
+        ComboTipoBusqueda.setBorder(null);
+        ComboTipoBusqueda.setFocusable(false);
+        ComboTipoBusqueda.setOpaque(false);
+        PanelBusquedas2.add(ComboTipoBusqueda);
+        ComboTipoBusqueda.setBounds(140, 20, 130, 30);
 
         jLabel6.setFont(new Font("Dialog", 0, 12)); // NOI18N
         jLabel6.setForeground(new Color(255, 141, 141));
@@ -283,21 +283,20 @@ public class Vista extends JFrame {
         PanelBusquedas2.add(jLabel6);
         jLabel6.setBounds(10, 60, 50, 30);
 
-        jTextField3.setText(" ");
-        jTextField3.setBorder(new MatteBorder(null));
-        PanelBusquedas2.add(jTextField3);
-        jTextField3.setBounds(60, 60, 90, 30);
+        BtnVerticeBusqueda.setBackground(new Color(38, 166, 154));
+        BtnVerticeBusqueda.setFont(new Font("Dialog", 0, 14)); // NOI18N
+        BtnVerticeBusqueda.setForeground(new Color(255, 255, 255));
+        BtnVerticeBusqueda.setText("Buscar");
+        BtnVerticeBusqueda.setBorder(null);
+        BtnVerticeBusqueda.setBorderPainted(false);
+        BtnVerticeBusqueda.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        BtnVerticeBusqueda.setFocusPainted(false);
+        PanelBusquedas2.add(BtnVerticeBusqueda);
+        BtnVerticeBusqueda.setBounds(160, 60, 110, 30);
 
-        jButton4.setBackground(new Color(38, 166, 154));
-        jButton4.setFont(new Font("Dialog", 0, 14)); // NOI18N
-        jButton4.setForeground(new Color(255, 255, 255));
-        jButton4.setText("Buscar");
-        jButton4.setBorder(null);
-        jButton4.setBorderPainted(false);
-        jButton4.setCursor(new Cursor(Cursor.HAND_CURSOR));
-        jButton4.setFocusPainted(false);
-        PanelBusquedas2.add(jButton4);
-        jButton4.setBounds(160, 60, 110, 30);
+        TxtVerticeBusqueda.setBorder(new MatteBorder(null));
+        PanelBusquedas2.add(TxtVerticeBusqueda);
+        TxtVerticeBusqueda.setBounds(60, 60, 90, 30);
 
         PanelContBusquedasRecorridos.add(PanelBusquedas2);
         PanelBusquedas2.setBounds(0, 0, 280, 110);
@@ -400,6 +399,18 @@ public class Vista extends JFrame {
         return TxtAdyacenciaOrigen;
     }
 
+    public JButton getBtnVerticeBusqueda() {
+        return BtnVerticeBusqueda;
+    }
+
+    public JComboBox<String> getComboTipoBusqueda() {
+        return ComboTipoBusqueda;
+    }
+
+    public JTextField getTxtVerticeBusqueda() {
+        return TxtVerticeBusqueda;
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private JButton BtnAdyacencia;
     private JButton BtnAgregarArista;
@@ -407,6 +418,8 @@ public class Vista extends JFrame {
     private JButton BtnBorrarArista;
     private JButton BtnBorrarVertice;
     private JButton BtnCrearGrafo;
+    private JButton BtnVerticeBusqueda;
+    private JComboBox<String> ComboTipoBusqueda;
     private JPanel ContainerpanelGraficoGrafo;
     private JPanel PanelAristas;
     private JPanel PanelBusquedas1;
@@ -418,14 +431,13 @@ public class Vista extends JFrame {
     private JPanel PanelVertices;
     private JTextField TxtAdyacenciaDestino;
     private JTextField TxtAdyacenciaOrigen;
+    private JTextField TxtVerticeBusqueda;
     private ButtonGroup grupoBusqueda;
     private ButtonGroup grupoCreacionGrafo;
     private ButtonGroup grupoRecorrido;
     private JButton jButton10;
     private JButton jButton11;
-    private JButton jButton4;
     private JComboBox<String> jComboBox1;
-    private JComboBox<String> jComboBox4;
     private JLabel jLabel5;
     private JLabel jLabel6;
     private JLabel jLabel7;
@@ -433,7 +445,6 @@ public class Vista extends JFrame {
     private JPanel jPanel6;
     private JScrollPane jScrollPane1;
     private JSplitPane jSplitPane1;
-    private JTextField jTextField3;
     private JPanel panelGraficoGrafo;
     // End of variables declaration//GEN-END:variables
 }
