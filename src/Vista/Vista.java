@@ -82,8 +82,8 @@ public class Vista extends JFrame {
         BtnVerticeBusqueda = new JButton();
         TxtVerticeBusqueda = new JTextField();
         PanelBusquedas3 = new JPanel();
-        jButton10 = new JButton();
-        jButton11 = new JButton();
+        BtnRecorridoProfundidad = new JButton();
+        BtnRecorridoAnchura = new JButton();
 
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setTitle("Edición de grafos");
@@ -305,27 +305,27 @@ public class Vista extends JFrame {
         PanelBusquedas3.setBorder(BorderFactory.createTitledBorder(null, "Recorridos", TitledBorder.DEFAULT_JUSTIFICATION, TitledBorder.DEFAULT_POSITION, new Font("Dialog", 0, 12), new Color(38, 166, 154))); // NOI18N
         PanelBusquedas3.setLayout(null);
 
-        jButton10.setBackground(new Color(38, 166, 154));
-        jButton10.setFont(new Font("Dialog", 0, 14)); // NOI18N
-        jButton10.setForeground(new Color(255, 255, 255));
-        jButton10.setText("Profundidad");
-        jButton10.setBorder(null);
-        jButton10.setBorderPainted(false);
-        jButton10.setCursor(new Cursor(Cursor.HAND_CURSOR));
-        jButton10.setFocusPainted(false);
-        PanelBusquedas3.add(jButton10);
-        jButton10.setBounds(150, 30, 110, 40);
+        BtnRecorridoProfundidad.setBackground(new Color(38, 166, 154));
+        BtnRecorridoProfundidad.setFont(new Font("Dialog", 0, 14)); // NOI18N
+        BtnRecorridoProfundidad.setForeground(new Color(255, 255, 255));
+        BtnRecorridoProfundidad.setText("Profundidad");
+        BtnRecorridoProfundidad.setBorder(null);
+        BtnRecorridoProfundidad.setBorderPainted(false);
+        BtnRecorridoProfundidad.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        BtnRecorridoProfundidad.setFocusPainted(false);
+        PanelBusquedas3.add(BtnRecorridoProfundidad);
+        BtnRecorridoProfundidad.setBounds(150, 30, 110, 40);
 
-        jButton11.setBackground(new Color(38, 166, 154));
-        jButton11.setFont(new Font("Dialog", 0, 14)); // NOI18N
-        jButton11.setForeground(new Color(255, 255, 255));
-        jButton11.setText("Anchura");
-        jButton11.setBorder(null);
-        jButton11.setBorderPainted(false);
-        jButton11.setCursor(new Cursor(Cursor.HAND_CURSOR));
-        jButton11.setFocusPainted(false);
-        PanelBusquedas3.add(jButton11);
-        jButton11.setBounds(20, 30, 110, 40);
+        BtnRecorridoAnchura.setBackground(new Color(38, 166, 154));
+        BtnRecorridoAnchura.setFont(new Font("Dialog", 0, 14)); // NOI18N
+        BtnRecorridoAnchura.setForeground(new Color(255, 255, 255));
+        BtnRecorridoAnchura.setText("Anchura");
+        BtnRecorridoAnchura.setBorder(null);
+        BtnRecorridoAnchura.setBorderPainted(false);
+        BtnRecorridoAnchura.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        BtnRecorridoAnchura.setFocusPainted(false);
+        PanelBusquedas3.add(BtnRecorridoAnchura);
+        BtnRecorridoAnchura.setBounds(20, 30, 110, 40);
 
         PanelContBusquedasRecorridos.add(PanelBusquedas3);
         PanelBusquedas3.setBounds(0, 110, 280, 90);
@@ -411,6 +411,14 @@ public class Vista extends JFrame {
         return TxtVerticeBusqueda;
     }
 
+    public JButton getBtnRecorridoAnchura() {
+        return BtnRecorridoAnchura;
+    }
+
+    public JButton getBtnRecorridoProfundidad() {
+        return BtnRecorridoProfundidad;
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private JButton BtnAdyacencia;
     private JButton BtnAgregarArista;
@@ -418,6 +426,8 @@ public class Vista extends JFrame {
     private JButton BtnBorrarArista;
     private JButton BtnBorrarVertice;
     private JButton BtnCrearGrafo;
+    private JButton BtnRecorridoAnchura;
+    private JButton BtnRecorridoProfundidad;
     private JButton BtnVerticeBusqueda;
     private JComboBox<String> ComboTipoBusqueda;
     private JPanel ContainerpanelGraficoGrafo;
@@ -435,8 +445,6 @@ public class Vista extends JFrame {
     private ButtonGroup grupoBusqueda;
     private ButtonGroup grupoCreacionGrafo;
     private ButtonGroup grupoRecorrido;
-    private JButton jButton10;
-    private JButton jButton11;
     private JComboBox<String> jComboBox1;
     private JLabel jLabel5;
     private JLabel jLabel6;

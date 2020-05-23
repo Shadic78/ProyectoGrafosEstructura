@@ -231,10 +231,10 @@ public class GrafoMatriz<T> implements Grafo<T> {
     }
 
     @Override
-    public ArrayList<T> recorrerAmplitud() throws VerticeNoExisteException {
+    public ArrayList<T> recorrerAmplitud() {
         int inicio = 0;
         ArrayList<Vertice> colaRecorrido = new ArrayList<Vertice>();
-        ArrayList<T> verticesRecorridos = new ArrayList<>();      
+        ArrayList<T> verticesRecorridos = new ArrayList<>();
         if (!isEmpty()) {
             // Meter en la cola y procesar el vertice de inicio
             colaRecorrido.add(0, vertices[inicio]);
@@ -242,9 +242,8 @@ public class GrafoMatriz<T> implements Grafo<T> {
 
             while (!colaRecorrido.isEmpty()) {
                 Vertice siguienteVertice = colaRecorrido.remove(0);
-                //System.out.println(siguienteVertice.getNombre());
                 for (int i = 0; i < matrizAdyacencia[siguienteVertice.getNumVertice()].length; i++) {
-                    if (matrizAdyacencia[siguienteVertice.getNumVertice()][i] == 1 && !verticesRecorridos.contains(vertices[i])) {
+                    if (matrizAdyacencia[siguienteVertice.getNumVertice()][i] == 1 && !verticesRecorridos.contains(vertices[i].getElemento())) {
                         verticesRecorridos.add(vertices[i].getElemento());
                         colaRecorrido.add(colaRecorrido.size(), vertices[i]);
                     }

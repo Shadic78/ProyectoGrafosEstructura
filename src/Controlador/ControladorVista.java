@@ -9,9 +9,14 @@ import GraphDesigns.GraphDesign;
 import Modelo.Grafo;
 import Modelo.Random;
 import Modelo.Vertice;
+import Recorridos.PaperRecorridoDesign;
+import Recorridos.RecorridoDesign1;
 import Vista.PanelDibujo;
+import Vista.RecorridosVista;
 import Vista.Vista;
+import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -25,6 +30,8 @@ public class ControladorVista {
     private PanelDibujo graficoGrafo;
     private GraphDesign design;
     private Grafo<String> grafo = null;
+    private RecorridosVista recorridosVista = null;
+    private RecorridoDesign1 recorridoDesign;
 
     public ControladorVista(Vista vista) {
         this.vista = vista;
@@ -35,6 +42,8 @@ public class ControladorVista {
         this.vista.getBtnBorrarVertice().addActionListener(this::borrarVertice);
         this.vista.getBtnAdyacencia().addActionListener(this::comprobarAdyacencia);
         this.vista.getBtnVerticeBusqueda().addActionListener(this::buscarVertice);
+        this.vista.getBtnRecorridoAnchura().addActionListener(this::recorridoAnchura);
+        this.vista.getBtnRecorridoProfundidad().addActionListener(this::recorridoProfundidad);
     }
 
     private void iniciarPanel(Grafo grafo, GraphDesign design) {
@@ -167,6 +176,34 @@ public class ControladorVista {
         } catch (VerticeNoExisteException ex) {
             JOptionPane.showMessageDialog(null, "Uno de los vertices no existe");
         }
+    }
+    
+    private void recorridoAnchura(ActionEvent e) {
+        try {
+            ArrayList<String> recorrido = grafo.recorrerAmplitud();
+            System.out.println("Anchura: " + recorrido);
+            iniciarPanelRecorrido(recorrido);
+        } catch (VerticeNoExisteException ex) {
+            Logger.getLogger(ControladorVista.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    private void recorridoProfundidad(ActionEvent e) {
+        try {
+            ArrayList<String> recorrido = grafo.recorrerProfundidad();
+            System.out.println("Profundidad: " + recorrido);
+        } catch (VerticeNoExisteException ex) {
+            Logger.getLogger(ControladorVista.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    private void iniciarPanelRecorrido(ArrayList<String> lista) {
+        RecorridosVista v = new RecorridosVista();
+        
+        this.recorridoDesign = new RecorridoDesign1(lista, v.getPanelDibujo().getWidth());
+        
+        v.getPanelDibujo().add(recorridoDesign, BorderLayout.CENTER);
+        v.setVisible(true);
     }
 
     public void setDesign(GraphDesign design) {
