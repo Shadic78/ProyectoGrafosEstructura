@@ -36,7 +36,7 @@ public class PaperRecorridoDesign extends JPanel {
     }    
     
     private int calcularTamRectangles(int sizePanel, int maxRectangles, int margenes) {
-        int totalMargenes = margenes * maxRectangles + 1;
+        int totalMargenes = margenes * (maxRectangles + 2);
         int espacioSobrante  = sizePanel - totalMargenes;
         int tamRectangulos = espacioSobrante / maxRectangles;
         return tamRectangulos;
