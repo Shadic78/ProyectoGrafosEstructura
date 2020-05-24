@@ -9,7 +9,6 @@ import GraphDesigns.GraphDesign;
 import Modelo.Grafo;
 import Modelo.Random;
 import Modelo.Vertice;
-import Recorridos.PaperRecorridoDesign;
 import Recorridos.RecorridoDesign1;
 import Vista.PanelDibujo;
 import Vista.RecorridosVista;
@@ -182,7 +181,7 @@ public class ControladorVista {
         try {
             ArrayList<String> recorrido = grafo.recorrerAmplitud();
             System.out.println("Anchura: " + recorrido);
-            iniciarPanelRecorrido(recorrido);
+            iniciarPanelRecorrido(recorrido, "Recorrido en anchura");
         } catch (VerticeNoExisteException ex) {
             Logger.getLogger(ControladorVista.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -192,13 +191,16 @@ public class ControladorVista {
         try {
             ArrayList<String> recorrido = grafo.recorrerProfundidad();
             System.out.println("Profundidad: " + recorrido);
+            iniciarPanelRecorrido(recorrido, "Recorrido en profundidad");            
         } catch (VerticeNoExisteException ex) {
             Logger.getLogger(ControladorVista.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
-    private void iniciarPanelRecorrido(ArrayList<String> lista) {
+    private void iniciarPanelRecorrido(ArrayList<String> lista, String titulo) {
         RecorridosVista v = new RecorridosVista();
+        v.setTitle(titulo);
+        v.setLocationRelativeTo(null);
         
         this.recorridoDesign = new RecorridoDesign1(lista, v.getPanelDibujo().getWidth());
         

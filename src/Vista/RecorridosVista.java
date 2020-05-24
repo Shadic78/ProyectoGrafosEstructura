@@ -32,9 +32,12 @@ public class RecorridosVista extends javax.swing.JFrame {
         PanelDibujo = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(461, 306));
+        setMinimumSize(new java.awt.Dimension(500, 306));
+        setPreferredSize(new java.awt.Dimension(500, 306));
 
         PanelDibujo.setBorder(javax.swing.BorderFactory.createTitledBorder("Recorrido"));
+        PanelDibujo.setMinimumSize(new java.awt.Dimension(500, 306));
+        PanelDibujo.setPreferredSize(new java.awt.Dimension(500, 306));
         PanelDibujo.setLayout(new java.awt.BorderLayout());
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

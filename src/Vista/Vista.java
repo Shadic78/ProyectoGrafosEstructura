@@ -39,6 +39,18 @@ public class Vista extends JFrame {
     public Vista() {
         initComponents();
         setIconImage(Toolkit.getDefaultToolkit().getImage("img/Icono2.png"));
+        
+        // Botones vertices
+        BtnAgregarVertice.setIcon(new ImageIcon("img/Button+GreenGray1.png"));
+        BtnAgregarVertice.setPressedIcon(new ImageIcon("img/Button+GreenGray2.png"));  
+        BtnBorrarVertice.setIcon(new ImageIcon("img/ButtonRedGray1.png"));
+        BtnBorrarVertice.setPressedIcon(new ImageIcon("img/ButtonRedGray2.png"));      
+        
+        // Botones aristas
+        BtnAgregarArista.setIcon(new ImageIcon("img/Button+GreenGray1.png"));
+        BtnAgregarArista.setPressedIcon(new ImageIcon("img/Button+GreenGray2.png"));  
+        BtnBorrarArista.setIcon(new ImageIcon("img/ButtonRedGray1.png"));
+        BtnBorrarArista.setPressedIcon(new ImageIcon("img/ButtonRedGray2.png"));          
     }
 
     /**
