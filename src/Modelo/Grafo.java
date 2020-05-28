@@ -44,5 +44,7 @@ public interface Grafo <T> {
 
     public boolean adyacente(int num1, int num2) throws VerticeNoExisteException;
 
-    public T getElemento(int vertice) throws VerticeNoExisteException;    
+    public T getElemento(int vertice) throws VerticeNoExisteException; 
+    
+    public boolean existeVertice(T elemento);
 }

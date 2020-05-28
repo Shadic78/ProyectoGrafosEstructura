@@ -23,7 +23,7 @@ import java.util.Queue;
 public class GrafoMatriz<T> implements Grafo<T> {
 
     private int numeroVertices;
-    private static final int MAXVERTICES = 20;
+    private static final int MAXVERTICES = 21;
     private Vertice<T>[] vertices;
     private int[][] matrizAdyacencia;
 
@@ -128,6 +128,9 @@ public class GrafoMatriz<T> implements Grafo<T> {
     
     @Override
     public void nuevoVertice(Vertice<T> vertice) throws VerticeExisteException {
+        if(numeroVertices == MAXVERTICES) {
+            throw new ArrayIndexOutOfBoundsException(); 
+        }
         boolean esta = getNumeroVertice(vertice.getElemento()) >= 0;
         if (esta) {
             throw new VerticeExisteException("El vertice existe");
@@ -149,23 +152,23 @@ public class GrafoMatriz<T> implements Grafo<T> {
                 try {
 
                     borrarArco(elemento, getElemento(i));
-                    System.out.println("Arco de " + elemento + " a " + getElemento(i) + " ->Eliminado");
                 } catch (ArcoNoExisteException ex) {
-
                     System.out.println(ex.getMessage());
                 }
             }
         }
 
         for (int i = va; i < numeroVertices; i++) {
-            vertices[i] = vertices[i + 1];
+            if(i != numeroVertices - 1) {
+                vertices[i] = vertices[i + 1];                
+            }
+            else {
+                vertices[i] = null;
+            }
         }
         moverColumnas(va);
         moverfilas(va);
-        System.out.println(this);
-
         numeroVertices--;
-
     }
 
     @Override
@@ -213,9 +216,6 @@ public class GrafoMatriz<T> implements Grafo<T> {
                 encontrado = true;
                 break;
             }
-
-            //Impresion en pantalla de la visita de vertices
-            System.out.println(vertices[verticeActual]);
 
             //paso 5 agregar todos los vertices adyacentes y que no esten procesados a la cola y marcarlos como procesados
             for (int i = 0; i < numeroVertices; i++) {
@@ -307,19 +307,29 @@ public class GrafoMatriz<T> implements Grafo<T> {
     private void moverColumnas(int columna) {
         for (int i = 0; i < numeroVertices; i++) {
             for (int j = columna; j < numeroVertices; j++) {
-                matrizAdyacencia[i][j] = matrizAdyacencia[i][j + 1];
+                if (j == numeroVertices - 1) {
+                    matrizAdyacencia[i][j] = 0;
+                } // De lo contrario se realiza el procedimiento de mover las columnas
+                else {
+                    // Mover una columna a la izquierda los valores
+                    matrizAdyacencia[i][j] = matrizAdyacencia[i][j + 1];
+                }
             }
         }
-
     }
 
     private void moverfilas(int fila) {
         for (int i = fila; i < numeroVertices; i++) {
             for (int j = 0; j < numeroVertices; j++) {
-                matrizAdyacencia[i][j] = matrizAdyacencia[i + 1][j];
+                if (i == numeroVertices - 1) {
+                    matrizAdyacencia[i][j] = 0;
+                } // De lo contrario se realiza el procedimiento de mover las columnas
+                else {
+                    // Mover una columna a la izquierda los valores
+                    matrizAdyacencia[i][j] = matrizAdyacencia[i + 1][j];
+                }
             }
         }
-
     }
 
     @Override
@@ -344,6 +354,20 @@ public class GrafoMatriz<T> implements Grafo<T> {
             }
         }
         return verticesList;
+    }
+
+    @Override
+    public boolean existeVertice(T elemento) {
+        boolean existe = false;
+        for (int i = 0; i < vertices.length; i++) {
+            if (vertices[i] != null) {
+                if (vertices[i].getElemento().equals(elemento)) {
+                    existe = true;
+                    break;
+                }
+            }
+        }
+        return existe;
     }
 
 }

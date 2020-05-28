@@ -4,6 +4,7 @@ import Excepciones.ArcoNoExisteException;
 import Excepciones.GrafoNoCreadoException;
 import Excepciones.VerticeExisteException;
 import Excepciones.VerticeNoExisteException;
+import GrafoAdcia.GrafoAdcia;
 import GrafoMatriz.GrafoMatriz;
 import GraphDesigns.GraphDesign;
 import Modelo.Grafo;
@@ -68,17 +69,26 @@ public class ControladorVista {
                 throw new GrafoNoCreadoException();
             }
             String nombre = JOptionPane.showInputDialog(null, "Nombre del vértice:");
-            Vertice v = new Vertice(
-                    nombre, 
-                    Random.randomNumber(30, graficoGrafo.getWidth() - 50),
-                    Random.randomNumber(30, graficoGrafo.getHeight() - 50)                    
-            );
-            grafo.nuevoVertice(v);
-            graficoGrafo.repaint();
+            
+            if(nombre != null) {
+                Vertice v = new Vertice(
+                        nombre, 
+                        Random.randomNumber(30, graficoGrafo.getWidth() - 50),
+                        Random.randomNumber(30, graficoGrafo.getHeight() - 50)                    
+                );
+                grafo.nuevoVertice(v);
+                graficoGrafo.repaint();                
+            }
+            else {
+                JOptionPane.showMessageDialog(null, "Se cancelo la creación del vértice");
+            }
+            
         } catch (VerticeExisteException ex) {
-            JOptionPane.showMessageDialog(null, ex.getMessage());
+            JOptionPane.showMessageDialog(null, "El vértice ya existe");
         } catch (GrafoNoCreadoException ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage());
+        } catch (ArrayIndexOutOfBoundsException ex) {
+            JOptionPane.showMessageDialog(null, "Se alcanzo el límite de vértices");
         }
     }
     
@@ -88,24 +98,42 @@ public class ControladorVista {
                 throw new GrafoNoCreadoException();
             }
             String nombre = JOptionPane.showInputDialog(null, "Nombre del vértice a borrar:");
-            grafo.borrarVertice(nombre);
-            graficoGrafo.repaint();
+            
+            if(nombre != null) {
+                grafo.borrarVertice(nombre);
+                graficoGrafo.repaint();                
+            }
+            else {
+                JOptionPane.showMessageDialog(null, "Se cancelo el borrado del vértice");
+            }
+            
         }
         catch (GrafoNoCreadoException ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage());
         } catch (VerticeNoExisteException ex) {
-            JOptionPane.showMessageDialog(null, ex.getMessage());
+            JOptionPane.showMessageDialog(null, "El vértice no existe");
         }        
     }
     
     private void agregarArista(ActionEvent e) {
-        String origen = JOptionPane.showInputDialog(null, "Vértice origen:");
-        String destino = JOptionPane.showInputDialog(null, "Vértice destino:");
         try {
+            if (this.grafo == null) {
+                throw new GrafoNoCreadoException();
+            }
+
+            String origen = JOptionPane.showInputDialog(null, "Vértice origen:");
+            String destino = JOptionPane.showInputDialog(null, "Vértice destino:");
+            
+            if(origen == null || destino == null) {
+                throw new VerticeNoExisteException("Alguno de los vértices no existe");
+            }
+
             grafo.union(origen, destino);
             graficoGrafo.repaint();
         } catch (VerticeNoExisteException ex) {
-            Logger.getLogger(ControladorVista.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, "Alguno de los vértices no existe");
+        } catch (GrafoNoCreadoException ex) {
+            JOptionPane.showMessageDialog(null, ex.getMessage());
         }
     }
     
@@ -116,14 +144,19 @@ public class ControladorVista {
             }
             String origen = JOptionPane.showInputDialog(null, "Vértice origen:");
             String destino = JOptionPane.showInputDialog(null, "Vértice destino:");   
+            
+            if(origen == null || destino == null) {
+                throw new VerticeNoExisteException("Alguno de los vértices no existe");
+            }            
+            
             grafo.borrarArco(origen, destino);
             graficoGrafo.repaint();
         } catch (GrafoNoCreadoException ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage());
         } catch (VerticeNoExisteException ex) {
-            JOptionPane.showMessageDialog(null, ex.getMessage());
+            JOptionPane.showMessageDialog(null, "Alguno de los vértices no existe");
         } catch (ArcoNoExisteException ex) {
-            JOptionPane.showMessageDialog(null, ex.getMessage());
+            JOptionPane.showMessageDialog(null, "La arista no existe");
         }
     }
     
@@ -134,32 +167,41 @@ public class ControladorVista {
             }
             String origen = vista.getTxtAdyacenciaOrigen().getText();
             String destino = vista.getTxtAdyacenciaDestino().getText();
-            System.out.println("Origen: " + origen);
-            System.out.println("Destino: " + destino);
+            
+            if(origen == null || destino == null) {
+                throw new VerticeNoExisteException("Alguno de los vértices no existe");
+            }            
+            
             if(grafo.adyacente(origen, destino)) {
                 JOptionPane.showMessageDialog(null, "Los vertices son adyacentes");
             }
             else {
                 JOptionPane.showMessageDialog(null, "Los vertices no son adyacentes");                
             }
+            
         } catch (GrafoNoCreadoException ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage());
         } catch (VerticeNoExisteException ex) {
-            JOptionPane.showMessageDialog(null, "Uno de los vertices no existe");
+            JOptionPane.showMessageDialog(null, "Alguno de los vértices no existe");
         }
     }
     
     private void crearGrafo(ActionEvent e) {
         JOptionPane.showMessageDialog(null, "Se creo el grafo");
-        this.grafo = new GrafoMatriz();
+        this.grafo = new GrafoAdcia<String>();
         this.design.setGrafo(grafo);
         iniciarPanel(grafo, design);
     }
     
     private void buscarVertice(ActionEvent e) {
-        String nombreVertice = vista.getTxtVerticeBusqueda().getText();
-        String tipoBusqueda = vista.getComboTipoBusqueda().getActionCommand();
         try {
+            if(this.grafo == null) {
+                throw new GrafoNoCreadoException();
+            }
+            
+            String nombreVertice = vista.getTxtVerticeBusqueda().getText();
+            String tipoBusqueda = vista.getComboTipoBusqueda().getActionCommand();
+
             if (tipoBusqueda.equals("Anchura")) {
                 if(grafo.buscarAmplitud(nombreVertice)) {
                     JOptionPane.showMessageDialog(null, "Se encontro el vértice");
@@ -173,27 +215,42 @@ public class ControladorVista {
                 JOptionPane.showMessageDialog(null, "No se encontro el vértice");
             }
         } catch (VerticeNoExisteException ex) {
-            JOptionPane.showMessageDialog(null, "Uno de los vertices no existe");
+            JOptionPane.showMessageDialog(null, "El vértice no existe");
+        } catch (GrafoNoCreadoException ex) {
+            JOptionPane.showMessageDialog(null, ex.getMessage());
         }
     }
     
     private void recorridoAnchura(ActionEvent e) {
         try {
+            if(this.grafo == null) {
+                throw new GrafoNoCreadoException();
+            }            
+            
             ArrayList<String> recorrido = grafo.recorrerAmplitud();
             System.out.println("Anchura: " + recorrido);
             iniciarPanelRecorrido(recorrido, "Recorrido en anchura");
+            
         } catch (VerticeNoExisteException ex) {
-            Logger.getLogger(ControladorVista.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, ex.getMessage());
+        } catch (GrafoNoCreadoException ex) {
+            JOptionPane.showMessageDialog(null, ex.getMessage());
         }
     }
     
     private void recorridoProfundidad(ActionEvent e) {
         try {
+            if(this.grafo == null) {
+                throw new GrafoNoCreadoException();
+            }             
+            
             ArrayList<String> recorrido = grafo.recorrerProfundidad();
             System.out.println("Profundidad: " + recorrido);
             iniciarPanelRecorrido(recorrido, "Recorrido en profundidad");            
         } catch (VerticeNoExisteException ex) {
-            Logger.getLogger(ControladorVista.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, ex.getMessage());
+        } catch (GrafoNoCreadoException ex) {
+            JOptionPane.showMessageDialog(null, ex.getMessage());
         }
     }
     
