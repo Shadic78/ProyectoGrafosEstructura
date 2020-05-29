@@ -78,7 +78,7 @@ public class Vista extends JFrame {
         BtnAgregarVertice = new JButton();
         BtnBorrarVertice = new JButton();
         PanelCreacion = new JPanel();
-        jComboBox1 = new JComboBox<>();
+        ComboTipoGrafo = new JComboBox<>();
         BtnCrearGrafo = new JButton();
         PanelContBusquedasRecorridos = new JPanel();
         PanelBusquedas1 = new JPanel();
@@ -98,7 +98,7 @@ public class Vista extends JFrame {
         BtnRecorridoAnchura = new JButton();
 
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Edición de grafos");
+        setTitle("Editor de grafos");
         setMinimumSize(new Dimension(800, 600));
         addComponentListener(new ComponentAdapter() {
             public void componentResized(ComponentEvent evt) {
@@ -197,14 +197,14 @@ public class Vista extends JFrame {
         PanelCreacion.setPreferredSize(new Dimension(22, 80));
         PanelCreacion.setLayout(null);
 
-        jComboBox1.setEditable(true);
-        jComboBox1.setFont(new Font("Dialog", 0, 12)); // NOI18N
-        jComboBox1.setModel(new DefaultComboBoxModel<>(new String[] { "Matriz de adyacencia", "Lista de adyacencia" }));
-        jComboBox1.setBorder(BorderFactory.createTitledBorder(null, "Tipo de grafo", TitledBorder.DEFAULT_JUSTIFICATION, TitledBorder.DEFAULT_POSITION, new Font("Dialog", 0, 11), new Color(255, 141, 141))); // NOI18N
-        jComboBox1.setFocusable(false);
-        jComboBox1.setOpaque(false);
-        PanelCreacion.add(jComboBox1);
-        jComboBox1.setBounds(10, 20, 150, 50);
+        ComboTipoGrafo.setEditable(true);
+        ComboTipoGrafo.setFont(new Font("Dialog", 0, 12)); // NOI18N
+        ComboTipoGrafo.setModel(new DefaultComboBoxModel<>(new String[] { "Matriz de adyacencia", "Lista de adyacencia" }));
+        ComboTipoGrafo.setBorder(BorderFactory.createTitledBorder(null, "Tipo de grafo", TitledBorder.DEFAULT_JUSTIFICATION, TitledBorder.DEFAULT_POSITION, new Font("Dialog", 0, 11), new Color(255, 141, 141))); // NOI18N
+        ComboTipoGrafo.setFocusable(false);
+        ComboTipoGrafo.setOpaque(false);
+        PanelCreacion.add(ComboTipoGrafo);
+        ComboTipoGrafo.setBounds(10, 20, 150, 50);
 
         BtnCrearGrafo.setBackground(new Color(38, 166, 154));
         BtnCrearGrafo.setFont(new Font("Dialog", 0, 14)); // NOI18N
@@ -367,6 +367,10 @@ public class Vista extends JFrame {
 
     }//GEN-LAST:event_formComponentResized
 
+    public JComboBox<String> getComboTipoGrafo() {
+        return ComboTipoGrafo;
+    }
+
     public JPanel getPanelGraficoGrafo() {
         return ContainerpanelGraficoGrafo;
     }
@@ -442,6 +446,7 @@ public class Vista extends JFrame {
     private JButton BtnRecorridoProfundidad;
     private JButton BtnVerticeBusqueda;
     private JComboBox<String> ComboTipoBusqueda;
+    private JComboBox<String> ComboTipoGrafo;
     private JPanel ContainerpanelGraficoGrafo;
     private JPanel PanelAristas;
     private JPanel PanelBusquedas1;
@@ -457,7 +462,6 @@ public class Vista extends JFrame {
     private ButtonGroup grupoBusqueda;
     private ButtonGroup grupoCreacionGrafo;
     private ButtonGroup grupoRecorrido;
-    private JComboBox<String> jComboBox1;
     private JLabel jLabel5;
     private JLabel jLabel6;
     private JLabel jLabel7;

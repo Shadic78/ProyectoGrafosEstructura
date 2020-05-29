@@ -4,6 +4,7 @@ import Excepciones.ArcoNoExisteException;
 import Excepciones.GrafoNoCreadoException;
 import Excepciones.VerticeExisteException;
 import Excepciones.VerticeNoExisteException;
+import Factory.FactoryGrafos;
 import GrafoAdcia.GrafoAdcia;
 import GrafoMatriz.GrafoMatriz;
 import GraphDesigns.GraphDesign;
@@ -187,10 +188,12 @@ public class ControladorVista {
     }
     
     private void crearGrafo(ActionEvent e) {
-        JOptionPane.showMessageDialog(null, "Se creo el grafo");
-        this.grafo = new GrafoAdcia<String>();
+        String tipo = (String) vista.getComboTipoGrafo().getSelectedItem();
+        this.grafo = FactoryGrafos.crearGrafo(tipo);
         this.design.setGrafo(grafo);
-        iniciarPanel(grafo, design);
+        iniciarPanel(grafo, design);        
+                
+        JOptionPane.showMessageDialog(null, "Se creo el grafo de tipo: \n" + tipo);
     }
     
     private void buscarVertice(ActionEvent e) {
